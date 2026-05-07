@@ -162,6 +162,12 @@ a { color: inherit; text-decoration: none; }
   max-width: 800px;
   margin: 0 auto;
 }
+.hero-center > .hero-eyebrow::before {
+  display: none;
+}
+.hero-center .hero-eyebrow {
+  justify-content: center;
+}
 .hero-center .hero-actions {
   justify-content: center;
 }
@@ -326,8 +332,8 @@ a { color: inherit; text-decoration: none; }
 .hero-proof .proof-logos {
   display: flex;
   align-items: center;
-  gap: 40px;
-  flex-wrap: wrap;
+  gap: 32px;
+  flex-wrap: nowrap;
   justify-content: center;
 }
 .proof-logos {
@@ -877,7 +883,13 @@ a { color: inherit; text-decoration: none; }
   .hero { padding: 140px 0 80px; }
   .section, .gallery-section, .about, .why, .team-section, .contact { padding: 100px 0; }
   .audience-grid { grid-template-columns: 1fr; }
-  .hero-proof .proof-logos { gap: 20px; }
+  .hero-center { text-align: left; }
+  .hero-center .hero-actions { justify-content: flex-start; }
+  .hero-center .lead { margin-left: 0; }
+  .hero-center > .hero-eyebrow::before { display: inline-block; }
+  .hero-center .hero-eyebrow { justify-content: flex-start; }
+  .hero-proof { align-items: flex-start; }
+  .hero-proof .proof-logos { justify-content: flex-start; flex-wrap: wrap; gap: 20px; }
   .form-row { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .team-card { grid-template-columns: 1fr; text-align: left; }
