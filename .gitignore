@@ -1,0 +1,16 @@
+.DS_Store
+*.png
+last-ned-bilder.sh
+exterior/
+images/.gitkeep
+images/KINDGATEN*
+images/warehouse*
+images/wedding*
+images/FARM*
+images/building*
+images/carparking*
+images/park*
+images/resident*
+images/villa\ *
+images/apartment*
+images/interior\ *

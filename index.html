@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WABI 3D | 3D Visualisering for Eiendom | Fotorealistisk 3D for Eiendomsutviklere</title>
+<meta name="description" content="WABI 3D leverer fotorealistisk 3D visualisering for eiendomsutviklere i Norge. Eksteriør, interiør og prosjektillustrasjoner som selger boliger før byggestart. Kontakt oss for tilbud.">
+<meta name="keywords" content="3D visualisering eiendom, 3D visualisering, eiendomsutvikling, fotorealistisk 3D, 3D illustrasjon bolig, 3D rendering eiendom, arkitekturvisualisering, Norge">
+<meta property="og:title" content="WABI 3D | 3D Visualisering for Eiendom">
+<meta property="og:description" content="Fotorealistisk 3D visualisering for eiendomsutviklere i Norge. Eksteriør, interiør og prosjektillustrasjoner.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://wabi3.no">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #050505;
+  --bg-2: #0c0c0d;
+  --ink: #f4f4f4;
+  --ink-2: #c9c9c9;
+  --ink-3: #7a7a7a;
+  --line: rgba(255,255,255,0.08);
+  --line-2: rgba(255,255,255,0.14);
+  --chrome: #d8d8d8;
+  --display: 'Bricolage Grotesque', 'Helvetica Neue', sans-serif;
+  --body: 'Inter Tight', 'Helvetica Neue', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* radial vignette layer that lives behind everything */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 85% 15%, rgba(255,255,255,0.06), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 10% 90%, rgba(255,255,255,0.04), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.label {
+  font-family: var(--body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.display {
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===================== NAV ===================== */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 22px 0;
+  backdrop-filter: blur(14px);
+  background: rgba(5,5,5,0.55);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 0.18em;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.brand-mark {
+  display: inline-block;
+  width: 8px; height: 8px;
+  background: var(--ink);
+  border-radius: 50%;
+  margin-right: 4px;
+  transform: translateY(-2px);
+}
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--ink-2);
+  transition: color .25s ease;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 12px 22px;
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  transition: all .3s ease;
+}
+.nav-cta:hover {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+/* ===================== HERO ===================== */
+.hero {
+  min-height: 100vh;
+  padding: 180px 0 120px;
+  position: relative;
+  overflow: hidden;
+}
+.hero > .container {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 300px);
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 80px;
+  align-items: center;
+}
+.hero-eyebrow {
+  margin-bottom: 36px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--ink-3);
+}
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(52px, 7.2vw, 112px);
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  margin-bottom: 36px;
+}
+.hero h1 .accent {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink-2);
+}
+.hero h1 .hero-sub {
+  display: block;
+  font-size: 0.64em;
+  margin-top: 0.1em;
+}
+.hero p.lead {
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 520px;
+  margin-bottom: 48px;
+}
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 32px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  transition: all .3s cubic-bezier(.2,.8,.2,1);
+  cursor: pointer;
+  border: 1px solid var(--ink);
+}
+.btn-primary {
+  background: var(--ink);
+  color: var(--bg);
+}
+.btn-primary:hover {
+  background: transparent;
+  color: var(--ink);
+  transform: translateY(-2px);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line-2);
+}
+.btn-ghost:hover {
+  border-color: var(--ink);
+  transform: translateY(-2px);
+}
+.btn .arrow {
+  width: 14px; height: 14px;
+  transition: transform .3s ease;
+}
+.btn:hover .arrow { transform: translateX(4px); }
+
+.hero-visual {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  max-height: 420px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.hero-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.9) contrast(1.05);
+}
+
+.hero-meta {
+  margin-top: 60px;
+  padding-top: 48px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+}
+.hero-meta .stat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.hero-meta .stat-num {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 44px;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.hero-meta .scroll-hint {
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.scroll-hint .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--ink);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+/* ===================== SOCIAL PROOF ===================== */
+.proof {
+  padding: 80px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.proof-inner {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+.proof-text {
+  flex: 0 0 auto;
+  max-width: 320px;
+}
+.proof-text h3 {
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+.proof-logos {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 32px;
+  align-items: center;
+}
+.proof-logo {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.55;
+  filter: grayscale(1) brightness(2);
+  transition: opacity .3s ease;
+}
+.proof-logo:hover { opacity: 1; }
+.proof-logo img { max-height: 100%; max-width: 100%; }
+
+/* ===================== PROCESS ===================== */
+.section {
+  padding: 160px 0;
+  position: relative;
+}
+.section-head {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 60px;
+  margin-bottom: 100px;
+  align-items: end;
+}
+.section-head .label { margin-bottom: 24px; display: block; }
+.section-head h2 {
+  font-family: var(--display);
+  font-size: clamp(48px, 6vw, 88px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+}
+.section-head .lead {
+  font-size: 17px;
+  color: var(--ink-2);
+  line-height: 1.6;
+  max-width: 460px;
+  justify-self: end;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+.process-step {
+  padding: 48px 32px;
+  border-right: 1px solid var(--line);
+  position: relative;
+  transition: background .4s ease;
+}
+.process-step:last-child { border-right: none; }
+.process-step::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .5s cubic-bezier(.2,.8,.2,1);
+}
+.process-step:hover::after { transform: scaleX(1); }
+.process-step:hover { background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, transparent 70%); }
+.process-num {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+  margin-bottom: 80px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.process-num::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--ink);
+  border-radius: 50%;
+}
+.process-step h3 {
+  font-family: var(--display);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+.process-step p {
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.55;
+  max-width: 240px;
+}
+
+/* ===================== GALLERY ===================== */
+.gallery-section { padding: 160px 0; }
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 280px;
+  gap: 24px;
+}
+.tile {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  cursor: pointer;
+}
+.tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.92) contrast(1.05);
+  transition: transform 1.2s cubic-bezier(.2,.8,.2,1), filter .6s ease;
+}
+.tile:hover img {
+  transform: scale(1.06);
+  filter: brightness(1) contrast(1.05);
+}
+.tile-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.85));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px;
+  z-index: 2;
+}
+.tile-cat {
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 8px;
+}
+.tile-title {
+  font-family: var(--display);
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+.tile-desc {
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.5;
+  max-width: 320px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: all .5s ease;
+}
+.tile:hover .tile-desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* layout — editorial mosaic */
+.tile-1 { grid-column: span 7; grid-row: span 2; }
+.tile-2 { grid-column: span 5; grid-row: span 1; }
+.tile-3 { grid-column: span 5; grid-row: span 1; }
+.tile-4 { grid-column: span 4; grid-row: span 2; }
+.tile-5 { grid-column: span 8; grid-row: span 1; }
+.tile-6 { grid-column: span 8; grid-row: span 1; }
+
+/* ===================== ABOUT / WHO ===================== */
+.about {
+  padding: 160px 0;
+  position: relative;
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.about-text h2 {
+  font-family: var(--display);
+  font-size: clamp(44px, 5.5vw, 80px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  margin-bottom: 36px;
+}
+.about-text h2 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink-2);
+}
+.about-text p {
+  font-size: 18px;
+  color: var(--ink-2);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  max-width: 540px;
+}
+.about-visual {
+  aspect-ratio: 4 / 5;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.about-visual img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85) contrast(1.1);
+}
+
+/* who is it for */
+.audience {
+  padding: 120px 0 160px;
+  border-top: 1px solid var(--line);
+}
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.audience-card {
+  background: var(--bg);
+  padding: 56px 40px;
+  min-height: 280px;
+  position: relative;
+  overflow: hidden;
+  transition: background .4s ease;
+}
+.audience-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--ink);
+  transition: width .5s cubic-bezier(.2,.8,.2,1);
+}
+.audience-card:hover { background: var(--bg-2); }
+.audience-card:hover::after { width: 100%; }
+.audience-card .num {
+  font-family: var(--display);
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: rgba(255,255,255,0.05);
+  margin-bottom: 32px;
+  line-height: 1;
+}
+.audience-card h4 {
+  font-family: var(--display);
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.audience-card p {
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+
+/* ===================== WHY 3D — full-bleed editorial block ===================== */
+.why {
+  padding: 160px 0;
+  position: relative;
+  overflow: hidden;
+}
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 80px;
+  align-items: center;
+}
+.why-visual {
+  aspect-ratio: 4 / 5;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.why-visual img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85) contrast(1.1) saturate(0.9);
+}
+.why-text .label { display: block; margin-bottom: 24px; }
+.why-text h2 {
+  font-family: var(--display);
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  margin-bottom: 36px;
+}
+.why-text p {
+  font-size: 17px;
+  color: var(--ink-2);
+  line-height: 1.65;
+  margin-bottom: 24px;
+  max-width: 560px;
+}
+.why-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid var(--line);
+}
+.why-stat .num {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 40px;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.why-stat .lbl {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* ===================== TEAM ===================== */
+.team-section { padding: 160px 0; border-top: 1px solid var(--line); }
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-top: 80px;
+}
+.team-card {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 32px;
+  transition: border-color .3s ease, background .3s ease;
+}
+.team-card:hover { border-color: var(--line-2); background: #111; }
+.team-photo {
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 40px;
+  color: var(--ink-3);
+  border: 1px solid var(--line-2);
+}
+.team-info h4 {
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin-bottom: 4px;
+}
+.team-role {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 16px;
+}
+.team-bio {
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+.team-contact {
+  font-size: 13px;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+.team-contact a:hover { color: var(--ink); }
+
+/* ===================== CONTACT ===================== */
+.contact {
+  padding: 160px 0;
+  border-top: 1px solid var(--line);
+  position: relative;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+}
+.contact-left h2 {
+  font-family: var(--display);
+  font-size: clamp(44px, 5.5vw, 76px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  margin-bottom: 32px;
+}
+.contact-left p {
+  font-size: 17px;
+  color: var(--ink-2);
+  line-height: 1.6;
+  margin-bottom: 48px;
+  max-width: 460px;
+}
+.contact-info {
+  border-top: 1px solid var(--line);
+  padding-top: 32px;
+}
+.contact-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+.contact-row .k {
+  color: var(--ink-3);
+  letter-spacing: 0.06em;
+}
+.contact-row .v { color: var(--ink); }
+
+/* form */
+.form { display: flex; flex-direction: column; gap: 20px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field label {
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.field input, .field textarea, .field select {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line-2);
+  padding: 12px 0;
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 15px;
+  outline: none;
+  transition: border-color .3s ease;
+}
+.field input:focus, .field textarea:focus, .field select:focus {
+  border-bottom-color: var(--ink);
+}
+.field textarea { resize: vertical; min-height: 100px; }
+.field select option { background: var(--bg); color: var(--ink); }
+.form .btn { align-self: flex-start; margin-top: 12px; }
+
+/* ===================== FOOTER ===================== */
+.footer {
+  padding: 80px 0 40px;
+  border-top: 1px solid var(--line);
+  background: var(--bg-2);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+.footer-brand .brand { font-size: 22px; margin-bottom: 20px; }
+.footer-brand p { font-size: 14px; color: var(--ink-3); line-height: 1.6; max-width: 320px; }
+.footer-col h5 {
+  font-family: var(--body);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.footer-col a {
+  font-size: 14px;
+  color: var(--ink-2);
+  transition: color .25s ease;
+}
+.footer-col a:hover { color: var(--ink); }
+.footer-bottom {
+  border-top: 1px solid var(--line);
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--ink-3);
+  letter-spacing: 0.06em;
+}
+
+/* ===================== ANIMATIONS ===================== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s cubic-bezier(.2,.8,.2,1);
+}
+.fade-in.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* responsive */
+@media (max-width: 1024px) {
+  .container { padding: 0 32px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 60px; }
+  .section-head { grid-template-columns: 1fr; gap: 24px; }
+  .section-head .lead { justify-self: start; }
+  .process-grid { grid-template-columns: repeat(2, 1fr); }
+  .process-step { border-bottom: 1px solid var(--line); padding-right: 32px; }
+  .process-step:nth-child(2) { border-right: none; }
+  .gallery { grid-auto-rows: 220px; }
+  .tile-1 { grid-column: span 12; }
+  .tile-2 { grid-column: span 6; }
+  .tile-3 { grid-column: span 6; }
+  .tile-4 { grid-column: span 6; grid-row: span 1; }
+  .tile-5 { grid-column: span 6; }
+  .tile-6 { grid-column: span 12; }
+  .about-grid, .why-grid, .contact-grid { grid-template-columns: 1fr; gap: 60px; }
+  .audience-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .nav-links { display: none; }
+  .proof-inner { flex-direction: column; align-items: flex-start; gap: 40px; }
+  .proof-logos { width: 100%; }
+}
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  .nav-inner { padding: 0 20px; }
+  .hero { padding: 140px 0 80px; }
+  .section, .gallery-section, .about, .why, .team-section, .contact { padding: 100px 0; }
+  .audience-grid { grid-template-columns: 1fr; }
+  .proof-logos { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .team-card { grid-template-columns: 1fr; text-align: left; }
+  .team-photo { margin: 0 0 8px; }
+  .nav-cta { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#home" class="brand"><span class="brand-mark"></span>WABI 3D</a>
+    <ul class="nav-links">
+      <li><a href="#prosess">Prosess</a></li>
+      <li><a href="#galleri">Galleri</a></li>
+      <li><a href="#hvem">Om oss</a></li>
+      <li><a href="#hvorfor">Hvorfor 3D</a></li>
+    </ul>
+    <a href="#kontakt" class="nav-cta">Ta kontakt</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text fade-in">
+        <div class="hero-eyebrow">
+          <span class="label">Fotorealistisk 3D for eiendom</span>
+        </div>
+        <h1>
+          3D-visualisering
+          <span class="hero-sub">for <span class="accent">eiendomsutviklere</span></span>
+        </h1>
+        <p class="lead">
+          La prosjektet ditt bli levende lenge før første spadetak. Vi leverer fotorealistisk 3D visualisering som selger boliger før de er bygget, laget for eiendomsutviklere som krever kvalitet.
+        </p>
+        <div class="hero-actions">
+          <a href="#kontakt" class="btn btn-primary">
+            Be om tilbud
+            <svg class="arrow" viewBox="0 0 14 14" fill="none"><path d="M1 7h12m0 0L7 1m6 6l-6 6" stroke="currentColor" stroke-width="1.5"/></svg>
+          </a>
+          <a href="#galleri" class="btn btn-ghost">
+            Se arbeidet vårt
+            <svg class="arrow" viewBox="0 0 14 14" fill="none"><path d="M1 7h12m0 0L7 1m6 6l-6 6" stroke="currentColor" stroke-width="1.5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual fade-in">
+        <img src="images/house-mountain.jpg" alt="3D visualisering eiendom, trehus med fjellpanorama av WABI 3D">
+      </div>
+    </div>
+
+    <div class="hero-meta">
+      <div class="stat">
+        <span class="label">Bilder levert</span>
+        <span class="stat-num">4 000+</span>
+      </div>
+      <div class="stat">
+        <span class="label">Erfaring</span>
+        <span class="stat-num">Siden 2020</span>
+      </div>
+      <div class="stat">
+        <span class="label">Leveringstid</span>
+        <span class="stat-num">~ 1 uke</span>
+      </div>
+      <span class="scroll-hint"><span class="dot"></span>Bla ned</span>
+    </div>
+  </div>
+</header>
+
+<!-- logo-seksjon skjult — legg til igjen når logoer er klare -->
+
+
+<!-- ============ PROCESS ============ -->
+<section class="section" id="prosess">
+  <div class="container">
+    <div class="section-head fade-in">
+      <div>
+        <span class="label">Prosess</span>
+        <h2>Slik gjør<br>vi det.</h2>
+      </div>
+      <p class="lead">
+        Vi har strømlinjeformet hele veien fra arkitekttegning til ferdig 3D visualisering, slik at du som utvikler kan bruke tiden på det viktigste: å selge prosjektet.
+      </p>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="process-num">01 / Start</div>
+        <h3>Du sender filene</h3>
+        <p>Send oss en PDF av plan, snitt, fasader og utomhusplan. Vi tar oss av resten.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">02 / Skisse</div>
+        <h3>Motta 3D-skisse</h3>
+        <p>Du får en 3D-skisse med flere vinkler, og velger selv hvilke vinkler du ønsker å gå videre med.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">03 / Detaljer</div>
+        <h3>Velg omgivelser</h3>
+        <p>Bestem himmel, dag eller kveld, vær, vegetasjon og stemning. Alt etter prosjektets behov.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">04 / Levering</div>
+        <h3>Ferdig 3D</h3>
+        <p>Du mottar ferdig 3D visualisering i full oppløsning, med ubegrenset antall revisjoner.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="gallery-section" id="galleri">
+  <div class="container">
+    <div class="section-head fade-in">
+      <div>
+        <span class="label">Galleri</span>
+        <h2>Utvalgte<br><em style="font-style:italic;font-weight:400;color:var(--ink-2);">prosjekter.</em></h2>
+      </div>
+      <p class="lead">
+        Et utvalg av 3D visualiseringer vi har levert for eiendomsutviklere. Eksteriør, interiør og prosjektillustrasjoner, ferdig modellert og teksturert etter teknisk tegning.
+      </p>
+    </div>
+
+    <div class="gallery">
+      <div class="tile tile-1">
+        <img src="images/villa-green.jpg" alt="3D visualisering eksteriør, moderne villa i natur">
+        <div class="tile-overlay">
+          <span class="tile-cat">Eksteriør · Villa</span>
+          <h3 class="tile-title">Villa</h3>
+          <p class="tile-desc">Moderne trevilla omgitt av frodig natur. Skandinavisk arkitektur i sitt rette element.</p>
+        </div>
+      </div>
+      <div class="tile tile-2">
+        <img src="images/hero.jpg" alt="3D visualisering eiendom, moderne enebolig">
+        <div class="tile-overlay">
+          <span class="tile-cat">Eksteriør · Enebolig</span>
+          <h3 class="tile-title">Enebolig</h3>
+          <p class="tile-desc">Moderne enebolig med carport. Detaljert 3D visualisering fra arkitekttegning.</p>
+        </div>
+      </div>
+      <div class="tile tile-3">
+        <img src="images/cabin-interior.jpg" alt="3D visualisering interiør, hytte med treverk">
+        <div class="tile-overlay">
+          <span class="tile-cat">Interiør · Hytte</span>
+          <h3 class="tile-title">Hyttestue</h3>
+          <p class="tile-desc">Varm treverk-stue med synlige bjelker og naturlig lys. Klassisk nordisk hygge.</p>
+        </div>
+      </div>
+      <div class="tile tile-4">
+        <img src="images/bathroom.jpg" alt="3D visualisering interiør, minimalistisk bad">
+        <div class="tile-overlay">
+          <span class="tile-cat">Interiør · Bad</span>
+          <h3 class="tile-title">Bad</h3>
+          <p class="tile-desc">Minimalistisk og lyst. Fotorealistiske materialer gjengitt med presisjon.</p>
+        </div>
+      </div>
+      <div class="tile tile-5">
+        <img src="images/terrace-evening.jpg" alt="3D visualisering terrasse i kveldslys">
+        <div class="tile-overlay">
+          <span class="tile-cat">Eksteriør · Terrasse</span>
+          <h3 class="tile-title">Terrasse</h3>
+          <p class="tile-desc">Stemningsfull kveldsstemning på takterrasse. Livsstil visualisert i gylne toner.</p>
+        </div>
+      </div>
+      <div class="tile tile-6">
+        <img src="images/kindgaten-project.jpg" alt="3D visualisering boligprosjekt med uteområder">
+        <div class="tile-overlay">
+          <span class="tile-cat">Eksteriør · Prosjekt</span>
+          <h3 class="tile-title">Boligprosjekt</h3>
+          <p class="tile-desc">Helhetlig prosjektvisualisering for eiendom med uteområder, lekeplass og fellesskap.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="hvem">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <span class="label">Hvem er WABI 3D</span>
+        <h2 style="margin-top:24px;">Fra tegning<br><em>til ferdig bilde.</em></h2>
+        <p>
+          Har du prosjekter der nybygg skal selges før ferdigstillelse? Vi modellerer og teksturer etter teknisk tegning og leverer en representativ 3D-illustrasjon som matcher kundens visjon.
+        </p>
+        <p>
+          Vi er bygget for eiendomsutviklere. Store nok til å levere på industrinivå, små nok til å bry oss om hvert eneste prosjekt. Vi kan også ta hånd om dronebilder dersom prosjektet trenger det.
+        </p>
+        <a href="#kontakt" class="btn btn-ghost" style="margin-top:24px;">
+          Snakk med oss
+          <svg class="arrow" viewBox="0 0 14 14" fill="none"><path d="M1 7h12m0 0L7 1m6 6l-6 6" stroke="currentColor" stroke-width="1.5"/></svg>
+        </a>
+      </div>
+      <div class="about-visual fade-in">
+        <img src="images/house-panorama.jpg" alt="3D visualisering eiendom, trehus med fjellpanorama">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUDIENCE ============ -->
+<section class="audience">
+  <div class="container">
+    <div class="section-head fade-in" style="margin-bottom:60px;">
+      <div>
+        <span class="label">For hvem</span>
+        <h2>Hvem bruker oss.</h2>
+      </div>
+      <p class="lead">
+        Vi jobber med aktørene som setter standarden i markedet. Fra utviklere og meglere til kommuner og presseteam.
+      </p>
+    </div>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="num">01</div>
+        <h4>Utviklere</h4>
+        <p>Eiendomsutviklere som vil presentere et ferdig produkt før byggestart, uten å betale storselskaps-pris.</p>
+      </div>
+      <div class="audience-card">
+        <div class="num">02</div>
+        <h4>Meglere</h4>
+        <p>En erfaren prosjektmegler vet at salgsmateriell er noe man ikke skal spare på. Du burde ikke spare på gode illustrasjoner.</p>
+      </div>
+      <div class="audience-card">
+        <div class="num">03</div>
+        <h4>Kommune</h4>
+        <p>Nytt prosjekt på gang? Våre delikate 3D-illustrasjoner virker. Det vet vi fra fornøyde kunder.</p>
+      </div>
+      <div class="audience-card">
+        <div class="num">04</div>
+        <h4>Media & Finn.no</h4>
+        <p>De første bildene som kommer i media følger prosjektet for alltid. En potensiell kjøper avgjør innen 30 sekunder.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY 3D ============ -->
+<section class="why" id="hvorfor">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-visual fade-in">
+        <img src="images/villa-mountain.jpg" alt="3D visualisering eiendom, moderne villa med naturomgivelser">
+      </div>
+      <div class="why-text fade-in">
+        <span class="label">Hvorfor 3D</span>
+        <h2>Selg prosjektet før første spadetak.</h2>
+        <p>
+          Med WABI 3D presenterer vi det ferdige produktet for kunden lenge før byggeprosessen starter. Ved hjelp av fotorealistisk 3D-visualisering viser vi det endelige resultatet av boligen før den er ferdigstilt.
+        </p>
+        <p>
+          Vi skaper realistiske 3D-modeller ved å bruke arkitektenes tegninger. Resultatet: prosjektet selger seg selv allerede før byggingen begynner. Vi er her for å hjelpe deg med å lykkes i et utfordrende marked.
+        </p>
+        <div class="why-stats">
+          <div class="why-stat">
+            <div class="num">4 000+</div>
+            <div class="lbl">Bilder levert</div>
+          </div>
+          <div class="why-stat">
+            <div class="num">~ 8t</div>
+            <div class="lbl">Svartid</div>
+          </div>
+          <div class="why-stat">
+            <div class="num">∞</div>
+            <div class="lbl">Revisjoner</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section class="team-section" id="team">
+  <div class="container">
+    <div class="section-head fade-in">
+      <div>
+        <span class="label">Møt teamet</span>
+        <h2>Folkene bak<br>WABI 3D.</h2>
+      </div>
+      <p class="lead">
+        Et lite, dedikert team som kombinerer teknisk presisjon med eiendomsforståelse. Vi vet hva som selger, og vi vet hva som ser bra ut.
+      </p>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card fade-in">
+        <div class="team-photo"></div>
+        <div class="team-info">
+          <h4>[Navn kommer]</h4>
+          <div class="team-role">Daglig leder</div>
+          <p class="team-bio">
+            [Kort biografi kommer her. Bakgrunn, erfaring og rolle i WABI 3D.]
+          </p>
+          <div class="team-contact">
+            <a href="#">navn@wabi3.no</a> · <a href="#">+47 000 00 000</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card fade-in">
+        <div class="team-photo"></div>
+        <div class="team-info">
+          <h4>[Navn kommer]</h4>
+          <div class="team-role">Markedsansvarlig</div>
+          <p class="team-bio">
+            [Kort biografi kommer her. Bakgrunn, erfaring og rolle i WABI 3D.]
+          </p>
+          <div class="team-contact">
+            <a href="#">navn@wabi3.no</a> · <a href="#">+47 000 00 000</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="kontakt">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-left fade-in">
+        <span class="label">Tilbudsforespørsel</span>
+        <h2 style="margin-top:24px;">Start et<br>nytt prosjekt.</h2>
+        <p>
+          Våre rådgivere svarer innen 8 timer. Ordinær leveringstid er rundt 1 uke. Fortell oss om prosjektet ditt, så tar vi det derfra.
+        </p>
+        <div class="contact-info">
+          <div class="contact-row"><span class="k">E-post</span><span class="v">post@wabi3.no</span></div>
+          <div class="contact-row"><span class="k">Telefon</span><span class="v">+47 000 00 000</span></div>
+          <div class="contact-row"><span class="k">Adresse</span><span class="v">[Adresse kommer]</span></div>
+          <div class="contact-row"><span class="k">Org.nr.</span><span class="v">[Org.nr kommer]</span></div>
+        </div>
+      </div>
+
+      <form class="form fade-in" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Navn</label>
+            <input type="text" id="name" required>
+          </div>
+          <div class="field">
+            <label for="email">E-post</label>
+            <input type="email" id="email" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="phone">Telefon</label>
+            <input type="tel" id="phone">
+          </div>
+          <div class="field">
+            <label for="project">Prosjekttype</label>
+            <select id="project">
+              <option>Leilighet / leilighetskompleks</option>
+              <option>Enebolig</option>
+              <option>Hytte</option>
+              <option>Næringsbygg</option>
+              <option>Interiør</option>
+              <option>Annet</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="message">Fortell om prosjektet</label>
+          <textarea id="message" rows="4" placeholder="Antall bilder, ønsket leveringstid, type prosjekt..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">
+          Send forespørsel
+          <svg class="arrow" viewBox="0 0 14 14" fill="none"><path d="M1 7h12m0 0L7 1m6 6l-6 6" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand"><span class="brand-mark"></span>WABI 3D</div>
+        <p>Fotorealistisk 3D visualisering for eiendomsutviklere i Norge. Vi lager bildene, du selger prosjektet.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigasjon</h5>
+        <ul>
+          <li><a href="#prosess">Prosess</a></li>
+          <li><a href="#galleri">Galleri</a></li>
+          <li><a href="#hvem">Om oss</a></li>
+          <li><a href="#hvorfor">Hvorfor 3D</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Tjenester</h5>
+        <ul>
+          <li><a href="#galleri">Eksteriør</a></li>
+          <li><a href="#galleri">Interiør</a></li>
+          <li><a href="#galleri">Leilighet</a></li>
+          <li><a href="#galleri">Dronebilder</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Kontakt</h5>
+        <ul>
+          <li><a href="mailto:post@wabi3.no">post@wabi3.no</a></li>
+          <li><a href="#">+47 000 00 000</a></li>
+          <li><a href="#kontakt">Be om tilbud</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> WABI 3D AS. Alle rettigheter forbeholdt.</span>
+      <span>wabi3.no</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // dynamic year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // intersection observer for fade-in
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+  // form
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    const original = btn.innerHTML;
+    btn.innerHTML = 'Tusen takk! Du hører fra oss innen kort tid.';
+    btn.style.background = 'transparent';
+    btn.style.color = 'var(--ink)';
+    setTimeout(() => {
+      e.target.reset();
+      btn.innerHTML = original;
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 3500);
+  }
+</script>
+
+</body>
+</html>
