@@ -299,32 +299,19 @@ a { color: inherit; text-decoration: none; }
   50% { opacity: 1; transform: scale(1.3); }
 }
 
-/* ===================== SOCIAL PROOF ===================== */
-.proof {
-  padding: 80px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+/* ===================== SOCIAL PROOF (in hero) ===================== */
+.hero-proof {
+  margin-top: 48px;
+  padding-top: 32px;
 }
-.proof-inner {
+.hero-proof .proof-logos {
   display: flex;
   align-items: center;
-  gap: 80px;
-}
-.proof-text {
-  flex: 0 0 auto;
-  max-width: 320px;
-}
-.proof-text h3 {
-  font-family: var(--display);
-  font-size: 22px;
-  font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
+  gap: 48px;
+  flex-wrap: wrap;
 }
 .proof-logos {
-  flex: 1;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
   gap: 48px;
   align-items: center;
 }
@@ -862,8 +849,7 @@ a { color: inherit; text-decoration: none; }
   .team-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
   .nav-links { display: none; }
-  .proof-inner { flex-direction: column; align-items: flex-start; gap: 40px; }
-  .proof-logos { width: 100%; }
+  .hero-proof .proof-logos { gap: 32px; }
 }
 @media (max-width: 640px) {
   .container { padding: 0 20px; }
@@ -871,7 +857,7 @@ a { color: inherit; text-decoration: none; }
   .hero { padding: 140px 0 80px; }
   .section, .gallery-section, .about, .why, .team-section, .contact { padding: 100px 0; }
   .audience-grid { grid-template-columns: 1fr; }
-  .proof-logos { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .hero-proof .proof-logos { gap: 20px; }
   .form-row { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .team-card { grid-template-columns: 1fr; text-align: left; }
@@ -943,16 +929,8 @@ a { color: inherit; text-decoration: none; }
       </div>
       <span class="scroll-hint"><span class="dot"></span>Bla ned</span>
     </div>
-  </div>
-</header>
 
-<!-- ============ SOCIAL PROOF ============ -->
-<section class="proof">
-  <div class="container">
-    <div class="proof-inner">
-      <div class="proof-text">
-        <h3>Tillit fra eiendomsutviklere over hele Norge</h3>
-      </div>
+    <div class="hero-proof">
       <div class="proof-logos">
         <a href="https://dnbeiendom.no/" target="_blank" rel="noopener" class="proof-logo">
           <svg viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg"><text x="0" y="28" font-family="'Inter Tight','Helvetica Neue',sans-serif" font-size="18" font-weight="700" fill="#ffffff" letter-spacing="0.02em">DNB</text><text x="50" y="28" font-family="'Inter Tight','Helvetica Neue',sans-serif" font-size="18" font-weight="300" fill="#ffffff" letter-spacing="0.02em">Eiendom</text></svg>
@@ -969,7 +947,7 @@ a { color: inherit; text-decoration: none; }
       </div>
     </div>
   </div>
-</section>
+</header>
 
 
 <!-- ============ PROCESS ============ -->
