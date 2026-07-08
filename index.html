@@ -689,8 +689,8 @@ html.lenis,html.lenis body{height:auto}
        PRISLISTE_URL  – the file the visitor downloads. Drop your own PDF in at
                         this path to replace the generated placeholder.            */
   function setupLead(){
-    var LEAD_ENDPOINT = "send-lead.php";  // varsler ulrik@wabi3d.no om nye leads
-    var PRISLISTE_URL = "prisliste.pdf";  // <-- bytt ut med din egen prisliste
+    var LEAD_ENDPOINT = "https://formsubmit.co/ajax/ulrik@wabi3d.no"; // varsler ulrik@wabi3d.no om nye leads
+    var PRISLISTE_URL = "prisliste.pdf"; // <-- bytt ut med din egen prisliste
 
     var form = document.getElementById("leadForm");
     var input = document.getElementById("leadEmail");
@@ -742,7 +742,7 @@ html.lenis,html.lenis body{height:auto}
           fetch(LEAD_ENDPOINT, {
             method:"POST",
             headers:{ "Content-Type":"application/json", "Accept":"application/json" },
-            body: JSON.stringify({ email:email, kilde:"wabi3d.no – prisliste", tid:new Date().toISOString() })
+            body: JSON.stringify({ email:email, kilde:"wabi3d.no – prisliste", tid:new Date().toISOString(), _subject:"Ny prisliste-forespørsel fra " + email })
           }).catch(function(){});
         } catch(e){}
       }
