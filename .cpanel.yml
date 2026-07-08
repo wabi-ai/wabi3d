@@ -8,3 +8,4 @@ deployment:
     - /bin/cp favicon.svg $DEPLOYPATH
     - /bin/cp llms.txt $DEPLOYPATH
     - /bin/cp prisliste.pdf $DEPLOYPATH
+    - /bin/cp send-lead.php $DEPLOYPATH

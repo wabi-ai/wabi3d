@@ -689,8 +689,8 @@ html.lenis,html.lenis body{height:auto}
        PRISLISTE_URL  – the file the visitor downloads. Drop your own PDF in at
                         this path to replace the generated placeholder.            */
   function setupLead(){
-    var LEAD_ENDPOINT = "";              // <-- lim inn ditt skjema-/webhook-endepunkt
-    var PRISLISTE_URL = "prisliste.pdf"; // <-- bytt ut med din egen prisliste
+    var LEAD_ENDPOINT = "send-lead.php";  // varsler ulrik@wabi3d.no om nye leads
+    var PRISLISTE_URL = "prisliste.pdf";  // <-- bytt ut med din egen prisliste
 
     var form = document.getElementById("leadForm");
     var input = document.getElementById("leadEmail");
