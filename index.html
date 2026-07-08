@@ -9,25 +9,28 @@
 <meta name="google-site-verification" content="C4VzQ6UCuJUzt5elv7xeD37ieCULXD4KmThdGzuRPwI">
 <meta name="author" content="WABI 3D AS">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#e7dfd0">
+<meta name="theme-color" content="#ffffff">
 <meta property="og:title" content="WABI 3D | Fotorealistisk 3D for eiendom">
 <meta property="og:description" content="Arkitekturvisualisering for utviklere som vil selge prosjektet før første spadetak.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://wabi3d.no">
-<meta property="og:image" content="https://wabi3d.no/images/hero.jpg">
+<meta property="og:image" content="https://wabi3d.no/images/5.jpg">
 <meta property="og:locale" content="nb_NO">
 <meta property="og:site_name" content="WABI 3D">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="WABI 3D | Fotorealistisk 3D for eiendom">
 <meta name="twitter:description" content="3D-visualisering for eiendomsutviklere i Norge.">
-<meta name="twitter:image" content="https://wabi3d.no/images/hero.jpg">
+<meta name="twitter:image" content="https://wabi3d.no/images/5.jpg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="canonical" href="https://wabi3d.no">
-<link rel="preload" as="image" href="images/hero.jpg">
+<link rel="preload" as="image" href="images/hero-poster.webp" imagesrcset="images/hero-poster-800.webp 800w, images/hero-poster.webp 1280w" imagesizes="100vw" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgEM86xQ.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/playfairdisplay/v40/nuFkD-vYSZviVYUb_rj3ij__anPXDTnogkk7yRZrPA.woff2">
+<!-- Fonts: @font-face inlined below (files served from fonts.gstatic.com) so text renders without a render-blocking CSS round-trip -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -36,9 +39,9 @@
   "description": "Fotorealistisk 3D visualisering for eiendomsutviklere i Norge.",
   "url": "https://wabi3d.no",
   "logo": "https://wabi3d.no/favicon.svg",
-  "image": "https://wabi3d.no/images/hero.jpg",
+  "image": "https://wabi3d.no/images/5.jpg",
   "email": "ulrik@wabi3d.no",
-  "telephone": "+4740490009",
+  "telephone": "+4797478982",
   "address": { "@type": "PostalAddress", "addressCountry": "NO" },
   "areaServed": { "@type": "Country", "name": "Norway" },
   "serviceType": ["3D Visualisering", "Arkitekturvisualisering", "Fotorealistisk 3D rendering", "Eiendomsvisualisering"],
@@ -46,1254 +49,710 @@
   "priceRange": "$$"
 }
 </script>
+<!--
+  WABI 3D — ultra-clean, gallery-first one-pager.
+  Motion language (GSAP + ScrollTrigger + Lenis, all optional):
+   • Slow "camera" push-in: scroll-scrubbed scale 1.08→1.0 + gentle parallax on the
+     hero render; pinned push-in on the featured full-screen render (fine pointers).
+   • Text: soft fade + rise reveals, staggered per element.
+   • Gallery: one consistent bottom-up clip-path wipe, image settles from 1.1→1.0.
+   • Stats count up once in view.
+  Non-negotiables: prefers-reduced-motion → fully static & visible; no JS / blocked
+  CDN → content always visible; no pins on pointer:coarse; renders full-bleed and
+  free of heavy overlays.
+-->
 <style>
-:root {
-  --paper: #f5f0eb;
-  --paper-soft: #fffaf4;
-  --ink: #151310;
-  --ink-muted: #625c51;
-  --clay: #9d5942;
-  --moss: #596247;
-  --stone: #c5b9a7;
-  --charcoal: #1d1b17;
-  --white: #fffaf1;
-  --line: rgba(21, 19, 16, 0.16);
-  --line-dark: rgba(255, 250, 241, 0.18);
-  --serif: "Playfair Display", Georgia, serif;
-  --sans: "Manrope", "Helvetica Neue", sans-serif;
-  --ease: cubic-bezier(.2,.8,.2,1);
+/* Manrope + Playfair Display (variable), latin + latin-ext, display:swap */
+@font-face{font-family:'Manrope';font-style:normal;font-weight:400 800;font-display:swap;src:url(https://fonts.gstatic.com/s/manrope/v20/xn7gYHE41ni1AdIRggexSvfedN4.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:400 800;font-display:swap;src:url(https://fonts.gstatic.com/s/manrope/v20/xn7gYHE41ni1AdIRggmxSvfedN62Zw.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:500 600;font-display:swap;src:url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgEM86xQ.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:500 600;font-display:swap;src:url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTLYgEM86xRbPQ.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:500 600;font-display:swap;src:url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFkD-vYSZviVYUb_rj3ij__anPXDTnogkk7yRZrPA.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:500 600;font-display:swap;src:url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFkD-vYSZviVYUb_rj3ij__anPXDTnojEk7yRZrPJ-M.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+:root{
+  --bg:#ffffff;
+  --ink:#101418;
+  --ink-soft:#666e77;
+  --ink-faint:#9aa1a9;
+  --line:rgba(16,20,24,.14);
+  --line-soft:rgba(16,20,24,.08);
+  --blue:#1c3f9e;
+  --blue-soft:#9db6ff;
+  --navy:#0c1a40;
+  --serif:"Playfair Display",Georgia,serif;
+  --sans:"Manrope","Helvetica Neue",Arial,sans-serif;
+  --ease:cubic-bezier(.19,1,.22,1);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; background: var(--paper); }
-body {
-  background:
-    linear-gradient(90deg, rgba(21,19,16,.045) 1px, transparent 1px) 0 0 / 72px 72px,
-    linear-gradient(180deg, rgba(21,19,16,.035) 1px, transparent 1px) 0 0 / 72px 72px,
-    var(--paper);
-  color: var(--ink);
-  font-family: var(--sans);
-  line-height: 1.5;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--bg);-webkit-text-size-adjust:100%}
+body{
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px;line-height:1.6;
+  background:var(--bg);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
 }
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 100;
-  opacity: .2;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.38'/%3E%3C/svg%3E");
-  mix-blend-mode: multiply;
-}
-.cursor-glow {
-  position: fixed;
-  z-index: 99;
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: .18;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(157,89,66,.72), rgba(157,89,66,0) 62%);
-  mix-blend-mode: multiply;
-  transition: opacity .25s ease;
-}
-img { display: block; max-width: 100%; }
-a { color: inherit; text-decoration: none; }
-button, input, textarea { font: inherit; }
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,textarea{font:inherit;color:inherit}
+::selection{background:var(--ink);color:#fff}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:2px}
 
-.wrap { width: min(100% - 40px, 1440px); margin: 0 auto; }
-.eyebrow {
-  color: var(--clay);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-}
-.serif { font-family: var(--serif); font-weight: 400; }
-.reveal {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity .8s ease, transform .8s var(--ease);
-}
-.reveal.in { opacity: 1; transform: translateY(0); }
-.hero .reveal {
-  animation: rise .9s var(--ease) both;
-}
-.hero .reveal[style*="transition-delay"] {
-  animation-delay: .12s;
-}
-@keyframes rise {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+.wrap{width:min(100% - 48px,1200px);margin:0 auto}
+.wrap-wide{width:min(100% - 48px,1440px);margin:0 auto}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:fixed;top:12px;left:12px;z-index:99;padding:12px 18px;background:var(--ink);color:#fff;border-radius:6px;transform:translateY(-200%);transition:transform .3s}
+.skip:focus{transform:none}
 
-.nav {
-  position: fixed;
-  inset: 18px 20px auto;
-  z-index: 50;
-  color: var(--white);
+.eyebrow{
+  display:block;
+  color:var(--blue);
+  font-size:11px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;
 }
-.nav-inner {
-  width: min(100%, 1440px);
-  margin: 0 auto;
-  min-height: 64px;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 28px;
-  padding: 10px 10px 10px 22px;
-  background: rgba(21, 19, 16, .68);
-  border: 1px solid rgba(255,250,241,.16);
-  border-radius: 999px;
-  backdrop-filter: blur(18px);
-  box-shadow: 0 24px 70px rgba(0,0,0,.22);
-}
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-weight: 900;
-  letter-spacing: .09em;
-  font-size: 13px;
-}
-.brand-logo {
-  width: 28px;
-  height: auto;
-  display: block;
-}
-.nav-links {
-  justify-self: center;
-  display: flex;
-  gap: 6px;
-  list-style: none;
-}
-.nav-links a {
-  display: inline-flex;
-  padding: 11px 15px;
-  border-radius: 999px;
-  color: rgba(255,250,241,.76);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  transition: background .25s ease, color .25s ease;
-}
-.nav-links a:hover { background: rgba(255,250,241,.1); color: var(--white); }
-.nav-cta {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 0 22px;
-  border-radius: 999px;
-  background: var(--paper-soft);
-  color: var(--ink);
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: .13em;
-  text-transform: uppercase;
-}
+em{font-style:italic}
 
-.hero {
-  position: relative;
-  min-height: 100svh;
-  padding: 116px 0 72px;
-  background:
-    linear-gradient(115deg, var(--paper) 0 58%, transparent 58%),
-    var(--charcoal);
-  color: var(--ink);
-  isolation: isolate;
-  overflow: hidden;
+/* Soft fade + rise reveal — gated on .js so no-JS keeps everything visible */
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.js .reveal.in{opacity:1;transform:none}
+/* Hero entrance runs on pure CSS so the copy never waits for the CDN */
+.js .rise{animation:rise 1.1s var(--ease) both}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
+/* Lenis smooth scroll */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto !important}
+.lenis.lenis-stopped{overflow:hidden}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:54px;padding:0 30px;border-radius:999px;border:1px solid var(--ink);
+  font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;
+  background:var(--ink);color:#fff;
+  transition:background .35s ease,color .35s ease,border-color .35s ease,transform .35s var(--ease);
 }
-.hero-media {
-  position: absolute;
-  inset: 0 0 0 auto;
-  width: min(52vw, 820px);
-  z-index: -1;
-  box-shadow: -42px 0 90px rgba(21,19,16,.18);
+.btn svg{width:14px;height:14px;flex:none}
+.btn:hover{background:var(--blue);border-color:var(--blue);transform:translateY(-2px)}
+.btn-line{background:transparent;color:var(--ink)}
+.btn-line:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn-white{background:#fff;border-color:#fff;color:var(--ink)}
+.btn-white:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn-glass{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.55);color:#fff;backdrop-filter:blur(6px)}
+.btn-glass:hover{background:#fff;border-color:#fff;color:var(--ink);transform:translateY(-2px)}
+
+/* ---------- Nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(255,255,255,.82);backdrop-filter:blur(14px) saturate(1.05);border-bottom:1px solid var(--line-soft)}
+.nav-inner{width:min(100% - 48px,1440px);margin:0 auto;min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:inline-flex;align-items:center;gap:9px;font-weight:800;letter-spacing:.16em;font-size:14px}
+.brand img{width:24px;height:auto}
+.nav-links{display:flex;gap:34px;list-style:none}
+.nav-links a{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);transition:color .25s ease}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{
+  display:inline-flex;align-items:center;min-height:42px;padding:0 22px;border-radius:999px;
+  background:var(--ink);color:#fff;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  transition:background .3s ease;
 }
-.hero-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: saturate(.9) contrast(1.02) brightness(.9);
-  transform: scale(1.035);
-  animation: settle 1.8s var(--ease) forwards;
+.nav-cta:hover{background:var(--blue)}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;height:100svh;min-height:600px;overflow:hidden;background:#181a17}
+.hero-media{position:absolute;inset:-6% 0;will-change:transform}
+.hero-media img,.hero-media video{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center 58%;
 }
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background:
-    linear-gradient(90deg, rgba(245,240,235,0) 0 54%, rgba(29,27,23,.16) 62%, rgba(29,27,23,.58)),
-    linear-gradient(0deg, rgba(29,27,23,.48), transparent 36%);
+.hero-media video{opacity:0;transition:opacity .9s ease}
+.hero-media video.on{opacity:1}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,10,13,.62),rgba(8,10,13,.24) 36%,rgba(8,10,13,0) 64%)}
+.hero-inner{position:relative;z-index:2;height:100%;display:flex;align-items:flex-end;padding-bottom:clamp(52px,8vh,104px)}
+.hero-copy{max-width:760px;color:#fff}
+.hero-copy .eyebrow{color:rgba(255,255,255,.85)}
+.hero-copy h1{
+  margin-top:20px;
+  font-family:var(--serif);font-weight:500;
+  font-size:clamp(46px,8.4vw,116px);line-height:.98;letter-spacing:-.02em;
 }
-@keyframes settle { to { transform: scale(1); } }
-.hero-layout {
-  min-height: calc(100svh - 188px);
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 360px;
-  align-items: end;
-  gap: 56px;
+.hero-lead{margin-top:24px;max-width:52ch;font-size:clamp(16px,1.35vw,19px);color:rgba(255,255,255,.9)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+
+/* ---------- Stats ---------- */
+.stats{border-bottom:1px solid var(--line-soft);padding:clamp(40px,6vw,72px) 0}
+.stats-row{display:flex;justify-content:center;align-items:baseline;gap:clamp(36px,8vw,120px);flex-wrap:wrap;text-align:center}
+.stat b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(44px,4.8vw,76px);letter-spacing:-.02em}
+.stat > span{display:block;margin-top:10px;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft)}
+.stat b span{font:inherit;letter-spacing:inherit;color:inherit}
+
+/* ---------- Section scaffolding ---------- */
+.section{padding:clamp(96px,12vw,176px) 0}
+.sec-head{max-width:840px;margin:0 auto clamp(52px,7vw,92px);text-align:center}
+.sec-head h2{
+  margin-top:18px;font-family:var(--serif);font-weight:500;
+  font-size:clamp(36px,5.4vw,84px);line-height:1.02;letter-spacing:-.02em;
 }
-.hero-copy { max-width: 940px; padding-top: 16vh; }
-.hero-copy .eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  color: var(--clay);
+.sec-head h2 em{color:var(--blue)}
+.sec-head p{max-width:560px;margin:22px auto 0;color:var(--ink-soft);font-size:clamp(16px,1.25vw,18px)}
+.sec-cta{display:flex;justify-content:center;margin-top:clamp(56px,7vw,88px)}
+
+/* ---------- Galleri ---------- */
+.galleri{padding-bottom:0}
+.featured{position:relative;margin-top:0}
+.featured-pin{position:relative;height:100svh;overflow:hidden;background:#10151d}
+.featured-media{position:absolute;inset:0}
+.featured-media img{width:100%;height:100%;object-fit:cover;will-change:transform}
+.featured-scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,11,16,.6),rgba(8,11,16,.1) 42%,rgba(8,11,16,0) 66%)}
+.featured-meta{position:absolute;top:0;left:0;right:0;z-index:2;display:flex;justify-content:space-between;padding:clamp(20px,3vw,36px) clamp(24px,3vw,48px);color:rgba(255,255,255,.72);font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
+.featured-cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding-bottom:clamp(40px,6vw,76px);color:#fff}
+.featured-cap .eyebrow{color:rgba(255,255,255,.85)}
+.featured-cap h3{margin-top:16px;font-family:var(--serif);font-weight:500;font-size:clamp(30px,4.4vw,64px);line-height:1.04;letter-spacing:-.02em;max-width:20ch}
+
+/* Gallery grid */
+.g-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(40px,5vw,64px) clamp(18px,2.2vw,30px);padding-top:clamp(80px,10vw,140px)}
+.g-item{margin:0;min-width:0;content-visibility:auto;contain-intrinsic-size:auto 300px auto 480px}
+.g-item.w7{grid-column:span 7}
+.g-item.w5{grid-column:span 5}
+.g-media{position:relative;overflow:hidden;background:#eef0f2}
+.g-media img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.g-item.r32 .g-media{aspect-ratio:3/2}
+.g-item.r54 .g-media{aspect-ratio:5/4}
+.g-item.r87 .g-media{aspect-ratio:8/7}
+.g-item.r75 .g-media{aspect-ratio:7/5}
+.g-item figcaption{
+  display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  margin-top:14px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);
 }
-.hero-copy .eyebrow::before {
-  content: "";
-  width: 54px;
-  height: 1px;
-  background: currentColor;
+.g-item figcaption b{color:var(--ink);font-weight:800}
+.g-item figcaption .idx{color:var(--ink-faint);letter-spacing:.12em}
+/* bottom-up wipe reveal — gated on .js */
+.js .g-media{clip-path:inset(100% 0 0 0)}
+.js .g-media img{transform:scale(1.1)}
+.js .g-item.in .g-media{clip-path:inset(0 0 0 0);transition:clip-path 1.2s var(--ease)}
+.js .g-item.in .g-media img{transform:scale(1)}
+.g-item:hover .g-media img,
+.js .g-item.in:hover .g-media img{transform:scale(1.04)}
+.js .g-item figcaption{opacity:0;transition:opacity 1s ease .35s}
+.js .g-item.in figcaption{opacity:1}
+
+/* ---------- Prosess ---------- */
+.prosess{border-top:1px solid var(--line-soft)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(36px,4vw,52px) clamp(28px,3vw,44px)}
+.step{border-top:1px solid var(--line);padding-top:24px}
+.step .num{font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--blue)}
+.step h3{margin-top:44px;font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.2vw,33px);letter-spacing:-.01em;line-height:1.05}
+.step p{margin-top:12px;color:var(--ink-soft);font-size:15px;max-width:26ch}
+
+/* ---------- Kontakt ---------- */
+.contact{border-top:1px solid var(--line-soft)}
+.contact-top{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(40px,6vw,96px);align-items:end;margin-bottom:clamp(56px,8vw,104px)}
+.contact-intro h2{margin-top:18px;font-family:var(--serif);font-weight:500;font-size:clamp(36px,5vw,76px);line-height:1.02;letter-spacing:-.02em}
+.contact-intro h2 em{color:var(--blue)}
+.contact-intro p{margin-top:22px;max-width:46ch;color:var(--ink-soft);font-size:clamp(16px,1.25vw,18px)}
+.contact-links{list-style:none;border-top:1px solid var(--line)}
+.contact-links a{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:20px 2px;border-bottom:1px solid var(--line);transition:padding-left .35s var(--ease),color .3s ease}
+.contact-links a:hover{padding-left:10px;color:var(--blue)}
+.contact-links .k{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
+.contact-links .v{font-size:clamp(16px,1.3vw,19px);font-weight:600}
+
+/* Lead capture — the closing conversion module */
+.lead-card{
+  position:relative;border-radius:14px;overflow:hidden;
+  padding:clamp(36px,5.5vw,84px);
+  background:var(--navy);color:#fff;
 }
-h1 {
-  max-width: 870px;
-  margin-top: 28px;
-  font-family: var(--serif);
-  font-size: clamp(58px, 10vw, 158px);
-  font-weight: 500;
-  letter-spacing: -.075em;
-  line-height: .8;
+.lead-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,5vw,72px);align-items:center}
+.lead-copy .eyebrow{color:var(--blue-soft)}
+.lead-title{margin-top:16px;font-family:var(--serif);font-weight:500;font-size:clamp(30px,3.8vw,56px);line-height:1.06;letter-spacing:-.02em}
+.lead-title em{color:var(--blue-soft)}
+.lead-sub{margin-top:18px;max-width:46ch;color:rgba(226,234,255,.78);font-size:clamp(15px,1.2vw,17px)}
+.lead-points{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px 24px;list-style:none}
+.lead-points li{display:inline-flex;align-items:center;gap:10px;color:rgba(216,227,255,.9);font-size:13px;font-weight:600}
+.lead-points li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--blue-soft)}
+
+.lead-field{display:flex;flex-direction:column;gap:12px}
+.lead-input{
+  width:100%;min-height:58px;padding:0 22px;border-radius:999px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(157,182,255,.35);color:#fff;
+  font-size:16px;transition:border-color .25s ease,background .25s ease,box-shadow .25s ease;
 }
-h1 span {
-  display: block;
-  margin-left: clamp(0px, 8vw, 116px);
-  font-style: italic;
-  color: var(--clay);
+.lead-input::placeholder{color:rgba(206,219,248,.5)}
+.lead-input:focus{outline:none;border-color:var(--blue-soft);background:rgba(255,255,255,.1);box-shadow:0 0 0 4px rgba(157,182,255,.18)}
+.lead-input.err{border-color:#ff9b9b;box-shadow:0 0 0 4px rgba(255,120,120,.16)}
+.lead-form .btn{width:100%;min-height:58px}
+.lead-consent{margin-top:14px;font-size:12px;color:rgba(206,219,248,.6);line-height:1.55}
+.lead-status{margin-top:12px;font-size:13px;font-weight:600;min-height:18px;color:#ffc7c7}
+.lead-status.ok{color:#bfe6c8}
+.lead-done{display:flex;flex-direction:column;gap:14px}
+.lead-done[hidden]{display:none}
+.lead-done .check{display:inline-flex;align-items:center;gap:10px;color:#bfe6c8;font-weight:700;font-size:14px}
+.lead-done .btn{width:100%}
+.lead-done-note{font-size:13px;color:rgba(206,219,248,.7)}
+.linklike{background:none;border:none;padding:0;color:var(--blue-soft);text-decoration:underline;text-underline-offset:2px;cursor:pointer;font-size:13px}
+
+/* ---------- Footer ---------- */
+.footer{border-top:1px solid var(--line-soft);padding:32px 0 40px}
+.footer-inner{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;color:var(--ink-soft);font-size:13px}
+.footer .fbrand{display:inline-flex;align-items:center;gap:8px;font-weight:800;letter-spacing:.14em;color:var(--ink)}
+.footer .fbrand img{width:20px}
+
+/* ---------- Responsive ---------- */
+@media (max-width:960px){
+  .nav-links{display:none}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .contact-top{grid-template-columns:1fr;align-items:start}
+  .lead-grid{grid-template-columns:1fr}
 }
-.hero-lead {
-  max-width: 610px;
-  margin-top: 34px;
-  font-size: clamp(18px, 2vw, 24px);
-  color: var(--ink-muted);
+@media (pointer:coarse){
+  .featured-pin{height:74svh}
 }
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 38px;
-}
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  min-height: 54px;
-  padding: 0 26px;
-  border-radius: 999px;
-  border: 1px solid currentColor;
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  transition: transform .25s var(--ease), background .25s ease, color .25s ease;
-}
-.btn:hover { transform: translateY(-3px); }
-.btn-primary { background: var(--paper-soft); color: var(--ink); border-color: var(--paper-soft); }
-.btn-secondary { color: var(--ink); border-color: rgba(21,19,16,.28); }
-.btn-secondary:hover { background: rgba(21,19,16,.06); }
-.btn svg { width: 15px; height: 15px; }
-.proof-row {
-  margin-top: 62px;
-  max-width: 600px;
-  padding-top: 28px;
-  border-top: 1px solid rgba(21,19,16,.16);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px 34px;
-  align-items: center;
-}
-.proof-row span:not(.eyebrow) {
-  color: rgba(21,19,16,.66);
-  font-family: var(--serif);
-  font-size: clamp(20px, 1.55vw, 26px);
-  letter-spacing: -.03em;
+@media (max-width:640px){
+  body{font-size:16px}
+  .wrap,.wrap-wide{width:min(100% - 32px,1440px)}
+  .nav-inner{width:min(100% - 32px,1440px);min-height:60px}
+  .hero{min-height:540px}
+  .hero-actions .btn{flex:1 1 auto}
+  .stats-row{gap:20px;justify-content:space-between}
+  .stat span{letter-spacing:.14em}
+  .g-grid{grid-template-columns:1fr;gap:44px}
+  .g-item.w7,.g-item.w5{grid-column:span 1}
+  .steps{grid-template-columns:1fr}
+  .step h3{margin-top:24px}
+  .step p{max-width:none}
+  .lead-card{padding:30px 22px;border-radius:10px}
 }
 
-/* Reference-led hero: open sky, centered message, architecture anchored low. */
-.nav {
-  inset: 22px 32px auto;
-}
-.nav-inner {
-  min-height: 58px;
-  padding: 0;
-  background: transparent;
-  border-color: transparent;
-  box-shadow: none;
-  backdrop-filter: none;
-}
-.brand,
-.nav-links a {
-  color: var(--ink);
-  text-shadow: 0 1px 16px rgba(255,255,255,.7);
-}
-.nav-links a:hover {
-  background: rgba(255,255,255,.42);
-  color: var(--ink);
-}
-.nav-cta {
-  min-height: 54px;
-  padding: 0 28px;
-  background: rgba(255,255,255,.86);
-  border: 1px solid rgba(21,19,16,.08);
-  box-shadow: 0 18px 44px rgba(21,19,16,.08);
-}
-.hero {
-  min-height: 100svh;
-  padding: 108px 0 0;
-  background: #e8f4ff;
-  color: var(--ink);
-}
-.hero-media {
-  inset: auto 0 0;
-  width: 100%;
-  height: clamp(440px, 52vh, 640px);
-  z-index: -2;
-  box-shadow: none;
-  overflow: hidden;
-}
-.hero-media img {
-  object-position: center 72%;
-  filter: saturate(.96) contrast(1.02) brightness(1.02);
-  transform: translateY(42px) scale(1.045);
-}
-.hero-media::before {
-  content: "";
-  position: absolute;
-  inset: -1px 0 auto;
-  height: 34%;
-  z-index: 2;
-  pointer-events: none;
-  background:
-    linear-gradient(180deg,
-      rgba(232,244,255,1) 0%,
-      rgba(237,244,245,.84) 20%,
-      rgba(245,240,235,.5) 42%,
-      rgba(245,240,235,.18) 64%,
-      rgba(245,240,235,.04) 86%,
-      rgba(245,240,235,0) 100%);
-}
-.hero::after {
-  z-index: -1;
-  background:
-    linear-gradient(180deg, rgba(209,230,248,.94) 0%, rgba(232,244,255,.9) 32%, rgba(245,240,235,.62) 48%, rgba(245,240,235,.18) 66%, rgba(245,240,235,.03) 84%, rgba(245,240,235,0) 100%),
-    radial-gradient(ellipse 62% 38% at 50% 25%, rgba(255,255,255,.84), rgba(255,255,255,.18) 50%, rgba(255,255,255,0) 78%),
-    linear-gradient(180deg, rgba(255,255,255,.58) 0%, rgba(255,255,255,0) 58%);
-}
-.hero-layout {
-  min-height: calc(100svh - 108px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0;
-  text-align: center;
-}
-.hero-copy {
-  max-width: 980px;
-  margin: 0 auto;
-  padding-top: clamp(34px, 8vh, 90px);
-  position: relative;
-  z-index: 2;
-}
-.hero-copy .eyebrow {
-  justify-content: center;
-  color: rgba(21,19,16,.62);
-}
-.hero-copy .eyebrow::before {
-  display: none;
-}
-h1 {
-  max-width: 1040px;
-  margin: 20px auto 0;
-  font-size: clamp(52px, 6.4vw, 96px);
-  letter-spacing: -.07em;
-  line-height: .9;
-}
-h1 span {
-  display: block;
-  margin-left: 0;
-  color: var(--ink);
-}
-.hero-lead {
-  max-width: 650px;
-  margin: 16px auto 0;
-  padding: 0;
-  border-radius: 0;
-  background: transparent;
-  backdrop-filter: none;
-  font-size: clamp(17px, 1.25vw, 21px);
-  color: rgba(21,19,16,.78);
-  text-shadow: 0 1px 18px rgba(255,255,255,.8);
-  box-shadow: none;
-}
-.hero-actions {
-  justify-content: center;
-  margin-top: 20px;
-}
-.hero-actions .btn {
-  min-height: 58px;
-  padding: 0 30px;
-  border-color: rgba(21,19,16,.22);
-  box-shadow: 0 16px 44px rgba(21,19,16,.1);
-}
-.hero-actions .btn-primary {
-  background: var(--ink);
-  color: var(--white);
-  border-color: var(--ink);
-}
-.hero-actions .btn-secondary {
-  background: rgba(255,250,241,.78);
-  color: var(--ink);
-  border-color: rgba(21,19,16,.24);
-  backdrop-filter: blur(10px);
-}
-.hero-actions .btn-secondary:hover {
-  background: rgba(255,250,241,.95);
-}
-.proof-row {
-  justify-content: center;
-  max-width: 620px;
-  margin: 14px auto 0;
-  padding-top: 0;
-  border-top: none;
-  gap: 7px 18px;
-  opacity: .9;
-  text-shadow: 0 1px 18px rgba(255,255,255,.86);
-}
-.proof-row .eyebrow {
-  flex-basis: 100%;
-  justify-content: center;
-  font-size: 8px;
-  letter-spacing: .2em;
-}
-.proof-row span:not(.eyebrow) {
-  font-size: clamp(11px, .74vw, 13px);
-  color: rgba(21,19,16,.66);
-}
-.section { padding: clamp(82px, 10vw, 150px) 0; }
-.section-intro {
-  display: grid;
-  grid-template-columns: .8fr 1.2fr;
-  gap: clamp(32px, 7vw, 110px);
-  align-items: end;
-  margin-bottom: 58px;
-}
-.section-title {
-  font-family: var(--serif);
-  font-size: clamp(44px, 6.8vw, 112px);
-  font-weight: 300;
-  letter-spacing: -.06em;
-  line-height: .88;
-}
-.section-title em { color: var(--clay); font-style: italic; }
-.section-copy {
-  max-width: 560px;
-  color: var(--ink-muted);
-  font-size: clamp(17px, 1.4vw, 21px);
-}
-
-.process {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
-}
-.process-item {
-  min-height: 360px;
-  padding: 28px;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: background .3s ease, transform .3s var(--ease);
-}
-.process-item:hover { background: var(--paper-soft); transform: translateY(-6px); }
-.process-item .num {
-  color: var(--clay);
-  font-weight: 900;
-  letter-spacing: .18em;
-  font-size: 12px;
-}
-.process-item h3 {
-  max-width: 220px;
-  font-family: var(--serif);
-  font-size: clamp(31px, 3vw, 48px);
-  font-weight: 300;
-  letter-spacing: -.045em;
-  line-height: .95;
-}
-.process-item p { color: var(--ink-muted); max-width: 260px; }
-
-.portfolio {
-  background: var(--charcoal);
-  color: var(--white);
-  padding: clamp(82px, 10vw, 150px) 0;
-}
-.portfolio .section-copy { color: rgba(255,250,241,.68); }
-.portfolio .section-title em { color: #d8b099; }
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: 150px;
-  gap: 16px;
-}
-.gallery-rail {
-  margin-top: 18px;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(320px, 42vw);
-  gap: 16px;
-  overflow-x: auto;
-  overscroll-behavior-inline: contain;
-  scroll-snap-type: inline mandatory;
-  padding-bottom: 14px;
-}
-.gallery-rail::-webkit-scrollbar { height: 8px; }
-.gallery-rail::-webkit-scrollbar-track { background: rgba(255,250,241,.09); }
-.gallery-rail::-webkit-scrollbar-thumb { background: rgba(255,250,241,.34); }
-.rail-card {
-  position: relative;
-  height: min(62vh, 560px);
-  min-height: 360px;
-  overflow: hidden;
-  border: 1px solid var(--line-dark);
-  scroll-snap-align: start;
-  perspective: 1000px;
-}
-.rail-card img {
-  width: 112%;
-  height: 112%;
-  object-fit: cover;
-  transform: translateX(var(--shift, 0)) scale(1.02);
-  transition: transform .35s ease;
-}
-.rail-card span {
-  position: absolute;
-  left: 18px;
-  bottom: 18px;
-  padding: 12px 14px;
-  background: rgba(19,17,14,.66);
-  border: 1px solid rgba(255,250,241,.14);
-  backdrop-filter: blur(14px);
-  color: var(--white);
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-}
-.work {
-  position: relative;
-  overflow: hidden;
-  min-height: 320px;
-  border: 1px solid var(--line-dark);
-  background: #111;
-  transform-style: preserve-3d;
-  perspective: 1200px;
-}
-.work.large { grid-column: span 7; grid-row: span 4; }
-.work.tall { grid-column: span 5; grid-row: span 4; }
-.work.wide { grid-column: span 6; grid-row: span 3; }
-.work img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform .9s var(--ease), filter .4s ease;
-}
-.work:hover img { transform: scale(1.045) rotateX(.8deg) rotateY(-1.2deg); filter: saturate(1.08); }
-.work-caption {
-  position: absolute;
-  inset: auto 18px 18px;
-  padding: 18px;
-  background: rgba(19,17,14,.66);
-  border: 1px solid rgba(255,250,241,.16);
-  backdrop-filter: blur(14px);
-  transform: translateZ(40px);
-}
-.work-caption span {
-  color: #d8b099;
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-}
-.work-caption h3 {
-  margin-top: 8px;
-  font-family: var(--serif);
-  font-size: 31px;
-  font-weight: 300;
-  letter-spacing: -.04em;
-  line-height: .95;
-}
-
-.split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 820px;
-}
-.split-media {
-  position: sticky;
-  top: 0;
-  height: 100svh;
-  overflow: hidden;
-}
-.split-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.split-content {
-  padding: clamp(72px, 8vw, 132px) clamp(32px, 6vw, 96px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.split-content h2 {
-  margin-top: 22px;
-  font-family: var(--serif);
-  font-size: clamp(48px, 7vw, 108px);
-  font-weight: 300;
-  letter-spacing: -.06em;
-  line-height: .9;
-}
-.split-content p {
-  margin-top: 30px;
-  max-width: 570px;
-  color: var(--ink-muted);
-  font-size: 19px;
-}
-.audiences {
-  margin-top: 54px;
-  display: grid;
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-}
-.audience {
-  display: grid;
-  grid-template-columns: 76px 1fr;
-  gap: 26px;
-  padding: 28px 0;
-  background: var(--paper);
-}
-.audience b {
-  color: var(--clay);
-  font-family: var(--serif);
-  font-size: 38px;
-  font-weight: 300;
-  text-align: center;
-}
-.audience h3 {
-  font-size: 22px;
-  letter-spacing: -.02em;
-}
-.audience p {
-  margin-top: 6px;
-  font-size: 15px;
-  color: var(--ink-muted);
-}
-
-.pricing {
-  padding: clamp(88px, 10vw, 138px) 0;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.28), rgba(255,255,255,0) 26%),
-    var(--paper);
-}
-.pricing-intro {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
-  gap: clamp(28px, 4vw, 54px);
-  align-items: end;
-  margin-bottom: 34px;
-}
-.pricing-intro h2 {
-  margin-top: 16px;
-  font-family: var(--serif);
-  font-size: clamp(44px, 6vw, 88px);
-  font-weight: 300;
-  letter-spacing: -.06em;
-  line-height: .9;
-}
-.pricing-copy {
-  max-width: 560px;
-  color: var(--ink-muted);
-  font-size: 18px;
-}
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-}
-.price-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  min-height: 470px;
-  padding: clamp(22px, 3vw, 34px);
-  background: rgba(255,252,247,.9);
-}
-.price-card.featured {
-  background: var(--charcoal);
-  color: var(--white);
-}
-.price-card.featured .price-label,
-.price-card.featured .price-note,
-.price-card.featured .price-list,
-.price-card.featured .price-list li,
-.price-card.featured .price-summary {
-  color: rgba(255,250,241,.82);
-}
-.price-chip {
-  display: inline-flex;
-  align-self: flex-start;
-  padding: 8px 12px;
-  border: 1px solid rgba(255,250,241,.14);
-  border-radius: 999px;
-  background: rgba(255,250,241,.08);
-  color: var(--white);
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-}
-.price-head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 18px;
-}
-.price-label {
-  color: var(--ink-muted);
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-}
-.price-amount {
-  font-size: clamp(28px, 3.6vw, 42px);
-  line-height: 1;
-  letter-spacing: -.05em;
-  white-space: nowrap;
-  flex: 0 0 auto;
-}
-.price-card h3 {
-  margin-top: 12px;
-  font-family: var(--serif);
-  font-size: clamp(26px, 3.2vw, 38px);
-  font-weight: 300;
-  letter-spacing: -.04em;
-  line-height: .92;
-}
-.price-summary {
-  color: var(--ink-muted);
-  font-size: 16px;
-}
-.price-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 10px;
-  color: var(--ink);
-  font-size: 16px;
-}
-.price-list li {
-  padding-top: 10px;
-  border-top: 1px solid rgba(21,19,16,.08);
-}
-.price-card.featured .price-list li {
-  border-top-color: rgba(255,250,241,.1);
-}
-.price-note {
-  margin-top: auto;
-  color: var(--ink-muted);
-  font-size: 13px;
-}
-.pricing-extras {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1px;
-  margin-top: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-}
-.pricing-extra {
-  min-height: 128px;
-  padding: 22px 24px 24px;
-  background: rgba(255,252,247,.9);
-}
-.pricing-extra span {
-  color: var(--ink-muted);
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-}
-.pricing-extra strong {
-  display: block;
-  margin-top: 14px;
-  font-size: 32px;
-  font-weight: 400;
-  letter-spacing: -.05em;
-  line-height: .9;
-}
-.pricing-extra p {
-  margin-top: 8px;
-  color: var(--ink-muted);
-  font-size: 15px;
-}
-
-.contact {
-  padding: clamp(90px, 10vw, 150px) 0 54px;
-}
-.contact-panel {
-  display: grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap: 40px;
-  padding: clamp(28px, 5vw, 74px);
-  background: var(--charcoal);
-  color: var(--white);
-}
-.contact-panel h2 {
-  font-family: var(--serif);
-  font-size: clamp(52px, 8vw, 126px);
-  font-weight: 300;
-  letter-spacing: -.07em;
-  line-height: .84;
-}
-.contact-panel p {
-  max-width: 520px;
-  margin-top: 28px;
-  color: rgba(255,250,241,.72);
-  font-size: 20px;
-}
-.contact-actions {
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  gap: 14px;
-}
-.contact-link {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--line-dark);
-  color: rgba(255,250,241,.88);
-}
-.contact-link span:first-child {
-  color: #d8b099;
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-}
-.footer {
-  padding-top: 34px;
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  color: var(--ink-muted);
-  font-size: 13px;
-}
-
-@media (max-width: 980px) {
-  .nav { inset: 18px 18px auto; }
-  .nav-inner { grid-template-columns: auto auto; justify-content: space-between; padding-left: 0; }
-  .nav-links { display: none; }
-  .hero-layout, .section-intro, .split, .contact-panel { grid-template-columns: 1fr; }
-  .hero { background: #e8f4ff; color: var(--ink); padding-bottom: 0; }
-  .hero-media {
-    position: absolute;
-    inset: auto 0 0;
-    width: 100%;
-    height: 54vh;
-    margin: 0;
-    opacity: 1;
-    box-shadow: none;
-  }
-  .hero-media img { object-position: center 68%; filter: saturate(.96) contrast(1.02) brightness(1.02); }
-  .hero::after {
-    display: block;
-    background:
-      linear-gradient(180deg, rgba(209,230,248,.94) 0%, rgba(232,244,255,.94) 34%, rgba(245,240,235,.78) 55%, rgba(245,240,235,.18) 78%, rgba(245,240,235,.02) 100%),
-      radial-gradient(ellipse 72% 38% at 50% 28%, rgba(255,255,255,.94), rgba(255,255,255,0) 72%);
-  }
-  .hero-copy { padding-top: clamp(60px, 12vh, 120px); }
-  .process { grid-template-columns: repeat(2, 1fr); }
-  .portfolio-grid { grid-auto-rows: 120px; }
-  .work.large, .work.tall, .work.wide { grid-column: span 12; grid-row: span 4; }
-  .split-media { position: relative; height: 58svh; }
-  .pricing-intro,
-  .pricing-grid,
-  .pricing-extras,
-  .contact-panel { grid-template-columns: 1fr; }
-  .price-card { min-height: auto; }
-  .split-content h2 { font-size: clamp(48px, 9vw, 76px); line-height: .92; }
-}
-@media (min-width: 981px) and (max-height: 820px) {
-  .hero-media {
-    height: clamp(390px, 50vh, 430px);
-  }
-  .hero-media img {
-    object-position: center 66%;
-  }
-}
-@media (max-width: 640px) {
-  .wrap { width: min(100% - 28px, 1440px); }
-  .nav-cta { display: none; }
-  .nav-inner { min-height: 50px; }
-  .hero { padding-top: 84px; min-height: 96svh; }
-  .hero-layout { min-height: calc(100svh - 150px); gap: 34px; }
-  .hero-copy { padding-top: clamp(54px, 11vh, 96px); }
-  .hero-media { height: 47vh; opacity: 1; }
-  .hero-media img { object-position: center 74%; }
-  h1 { font-size: clamp(40px, 12vw, 58px); line-height: .92; }
-  h1 span { margin-left: 0; }
-  .pricing { padding: 72px 0; }
-  .pricing-intro h2 { font-size: 56px; }
-  .pricing-copy { font-size: 17px; }
-  .price-card { padding: 18px; gap: 14px; }
-  .price-card h3 { font-size: 28px; }
-  .price-list { font-size: 15px; }
-  .pricing-extra strong { font-size: 28px; }
-  .price-head { flex-direction: column; gap: 10px; }
-  .price-amount { margin-top: 0; font-size: 24px; align-self: flex-start; }
-  .hero-lead {
-    border-radius: 0;
-    padding: 0;
-    font-size: 16px;
-    line-height: 1.45;
-  }
-  .hero-actions { margin-top: 22px; }
-  .hero-actions .btn {
-    min-height: 52px;
-    padding: 0 22px;
-    font-size: 11px;
-  }
-  .proof-row {
-    display: flex;
-    margin-top: 18px;
-    gap: 6px 12px;
-  }
-  .proof-row span:not(.eyebrow) {
-    font-size: 10px;
-  }
-  .section { padding: 76px 0; }
-  .process { grid-template-columns: 1fr; }
-  .process-item { min-height: 280px; }
-  .portfolio-grid { display: flex; flex-direction: column; }
-  .gallery-rail { grid-auto-columns: 84vw; }
-  .work { min-height: 360px; }
-  .work-caption { inset: auto 12px 12px; }
-  .split-content { padding: 72px 20px; }
-  .audience { grid-template-columns: 54px 1fr; }
-  .contact-panel { padding: 30px 22px; }
-  .contact-link { flex-direction: column; gap: 4px; }
-  .footer { flex-direction: column; }
-}
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: .01ms !important;
-  }
+/* ---------- Reduced motion: static, fully visible ---------- */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
+  .js .reveal{opacity:1 !important;transform:none !important}
+  .js .rise{animation:none !important;opacity:1 !important;transform:none !important}
+  .js .g-media{clip-path:none !important}
+  .hero-media video{display:none !important}
+  .js .g-media img{transform:none !important}
+  .js .g-item figcaption{opacity:1 !important}
 }
 </style>
 </head>
 <body>
-<div class="cursor-glow" aria-hidden="true"></div>
+<script>document.documentElement.classList.add('js');</script>
+<a class="skip" href="#innhold">Hopp til innhold</a>
+
 <nav class="nav" aria-label="Hovedmeny">
   <div class="nav-inner">
-    <a class="brand" href="#home"><img class="brand-logo" src="images/wabi-logo-black.svg" alt="" aria-hidden="true">3D</a>
+    <a class="brand" href="#home"><img src="images/wabi-logo-black.svg" alt="" aria-hidden="true">WABI 3D</a>
     <ul class="nav-links">
-      <li><a href="#prosess">Prosess</a></li>
       <li><a href="#galleri">Galleri</a></li>
-      <li><a href="#hvem">For hvem</a></li>
+      <li><a href="#prosess">Prosess</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
-    <a class="nav-cta" href="#kontakt">Be om tilbud</a>
+    <a class="nav-cta" href="#prisliste">Få prisliste</a>
   </div>
 </nav>
 
+<!-- ============ HERO ============ -->
 <header class="hero" id="home">
-  <picture class="hero-media">
-    <img src="images/5.jpg" alt="Fotorealistisk 3D-visualisering av mørk trevilla i høstlandskap" fetchpriority="high" decoding="async">
-  </picture>
-  <div class="wrap hero-layout">
-    <div class="hero-copy reveal">
-      <span class="eyebrow">3D visualisering for eiendom</span>
-      <h1>Selg boligen din før <span>første spadetak.</span></h1>
-      <p class="hero-lead">Fotorealistiske 3D-bilder som gjør prosjektet enklere å forstå, mer attraktivt å kjøpe og lettere å selge før byggestart.</p>
-      <div class="proof-row">
-        <span class="eyebrow">I godt selskap</span>
-        <span>PrivatMegleren</span>
-        <span>Agder Bolig Entreprenør</span>
-        <span>Flere private aktører</span>
-      </div>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="mailto:ulrik@wabi3d.no?subject=Tilbudsforesp%C3%B8rsel%20%E2%80%93%20WABI%203D">Start prosjekt <svg viewBox="0 0 16 16" fill="none"><path d="M2 8h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.7"/></svg></a>
-        <a class="btn btn-secondary" href="#galleri">Se arbeid <svg viewBox="0 0 16 16" fill="none"><path d="M2 8h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.7"/></svg></a>
+  <div class="hero-media" aria-hidden="true">
+    <img src="images/hero-poster.webp" srcset="images/hero-poster-800.webp 800w, images/hero-poster.webp 1280w" sizes="100vw" alt="" width="1280" height="720" fetchpriority="high" decoding="async">
+    <video id="heroVideo" muted loop playsinline preload="none" width="1280" height="720" data-src="images/hero.mp4" data-src-mobile="images/hero-mobile.mp4"></video>
+  </div>
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <span class="eyebrow rise">3D-visualisering for eiendom</span>
+      <h1 class="rise" style="animation-delay:.08s">Selg boligen din før <em>første spadetak.</em></h1>
+      <p class="hero-lead rise" style="animation-delay:.16s">Fra teknisk tegning til fotorealistisk 3D-bilde. Visualiseringer som gjør boligprosjektet enklere å forstå, og lettere å selge før byggestart.</p>
+      <div class="hero-actions rise" style="animation-delay:.24s">
+        <a class="btn btn-white" href="#prisliste">Få prisliste <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.7"/></svg></a>
+        <a class="btn btn-glass" href="#galleri">Se galleri</a>
       </div>
     </div>
   </div>
 </header>
 
-<main>
-  <section class="section" id="prosess">
+<main id="innhold">
+  <!-- ============ STATS ============ -->
+  <section class="stats" aria-label="Nøkkeltall">
+    <div class="wrap stats-row reveal">
+      <div class="stat"><b><span data-count="2500" data-suffix="+">2&nbsp;500+</span></b><span>bilder levert</span></div>
+      <div class="stat"><b>5–6&nbsp;dager</b><span>leveringstid</span></div>
+      <div class="stat"><b><span data-count="2020" data-sep="false">2020</span></b><span>aktiv siden</span></div>
+    </div>
+  </section>
+
+  <!-- ============ GALLERI ============ -->
+  <section class="section galleri" id="galleri">
     <div class="wrap">
-      <div class="section-intro reveal">
-        <div>
-          <span class="eyebrow">Prosess</span>
-          <h2 class="section-title">Fra PDF til <em>prospekt.</em></h2>
-        </div>
-        <p class="section-copy">En stram, forutsigbar arbeidsflyt laget for prosjekter der tempo og presisjon betyr noe. Du sender underlaget, vi bygger bildet som gjør prosjektet lettere å selge.</p>
+      <div class="sec-head">
+        <span class="eyebrow reveal">Galleri</span>
+        <h2 class="reveal" style="transition-delay:.08s">Våre <em>prosjekter.</em></h2>
+        <p class="reveal" style="transition-delay:.16s">Fotorealistiske 3D-bilder av eksteriør, interiør, bad, terrasse og uteområder. Modellert etter teknisk tegning og satt i riktig lys for målgruppen.</p>
       </div>
-      <div class="process">
-        <article class="process-item reveal">
-          <span class="num">01 / Underlag</span>
-          <div>
-            <h3>Send tegninger.</h3>
-            <p>Plan, snitt, fasader og utomhusplan er nok til å starte.</p>
-          </div>
+    </div>
+
+    <!-- Featured render — slow camera push-in -->
+    <div class="featured" id="featured">
+      <div class="featured-pin">
+        <div class="featured-media"><img src="images/g-featured.webp" srcset="images/g-featured-800.webp 800w, images/g-featured.webp 1600w" sizes="100vw" alt="Fotorealistisk 3D-visualisering av mørk trevilla i høstlandskap, sett ovenfra" width="1600" height="1194" loading="lazy" decoding="async"></div>
+        <div class="featured-scrim" aria-hidden="true"></div>
+        <div class="featured-meta" aria-hidden="true"><span>WABI 3D · Eksteriør</span><span>Utvalgt prosjekt</span></div>
+        <div class="wrap featured-cap">
+          <span class="eyebrow">Utvalgt prosjekt</span>
+          <h3>Hele tomten sett ovenfra, før første spadetak.</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap-wide">
+      <div class="g-grid">
+        <figure class="g-item w7 r32">
+          <div class="g-media"><img src="images/g-villa.webp" srcset="images/g-villa-800.webp 800w, images/g-villa.webp 1400w" sizes="(max-width: 640px) 100vw, 58vw" alt="3D-visualisering av moderne villa i grønt landskap" width="1400" height="788" loading="lazy" decoding="async"></div>
+          <figcaption><span><b>Eksteriør</b> · Villa</span><span class="idx">01</span></figcaption>
+        </figure>
+        <figure class="g-item w5 r54">
+          <div class="g-media"><img src="images/g-stue.webp" srcset="images/g-stue-800.webp 800w, images/g-stue.webp 1400w" sizes="(max-width: 640px) 100vw, 42vw" alt="Lys, moderne stue og spisestue med store vinduer" width="1400" height="1120" loading="lazy" decoding="async"></div>
+          <figcaption><span><b>Interiør</b> · Stue</span><span class="idx">02</span></figcaption>
+        </figure>
+        <figure class="g-item w5 r87">
+          <div class="g-media"><img src="images/g-bad.webp" srcset="images/g-bad-800.webp 800w, images/g-bad.webp 1400w" sizes="(max-width: 640px) 100vw, 42vw" alt="Eksklusivt baderom i 3D med mikrosement og walk-in dusj" width="1400" height="1220" loading="lazy" decoding="async"></div>
+          <figcaption><span><b>Interiør</b> · Bad</span><span class="idx">03</span></figcaption>
+        </figure>
+        <figure class="g-item w7 r32">
+          <div class="g-media"><img src="images/g-terrasse.webp" srcset="images/g-terrasse-800.webp 800w, images/g-terrasse.webp 1400w" sizes="(max-width: 640px) 100vw, 58vw" alt="3D-visualisering av takterrasse i kveldslys" width="1400" height="788" loading="lazy" decoding="async"></div>
+          <figcaption><span><b>Livsstil</b> · Terrasse</span><span class="idx">04</span></figcaption>
+        </figure>
+        <figure class="g-item w7 r32">
+          <div class="g-media"><img src="images/g-montasje.webp" srcset="images/g-montasje-800.webp 800w, images/g-montasje.webp 1400w" sizes="(max-width: 640px) 100vw, 58vw" alt="Fotomontasje av rekkehus med solcellepaneler satt inn i dronefoto" width="1400" height="933" loading="lazy" decoding="async"></div>
+          <figcaption><span><b>Fotomontasje</b> · Rekkehus</span><span class="idx">05</span></figcaption>
+        </figure>
+        <figure class="g-item w5 r54">
+          <div class="g-media"><img src="images/g-leilighet.webp" srcset="images/g-leilighet-800.webp 800w, images/g-leilighet.webp 1400w" sizes="(max-width: 640px) 100vw, 42vw" alt="3D-visualisering av lys leilighet med peis og utsikt over dalen" width="1400" height="1167" loading="lazy" decoding="async"></div>
+          <figcaption><span><b>Interiør</b> · Leilighet</span><span class="idx">06</span></figcaption>
+        </figure>
+        <figure class="g-item w5 r87">
+          <div class="g-media"><img src="images/g-kjokken.webp" srcset="images/g-kjokken-800.webp 800w, images/g-kjokken.webp 1400w" sizes="(max-width: 640px) 100vw, 42vw" alt="3D-visualisering av kjøkken med grønne fronter og marmor kjøkkenøy" width="1400" height="1232" loading="lazy" decoding="async"></div>
+          <figcaption><span><b>Interiør</b> · Kjøkken</span><span class="idx">07</span></figcaption>
+        </figure>
+        <figure class="g-item w7 r32">
+          <div class="g-media"><img src="images/g-rekkehus.webp" srcset="images/g-rekkehus-800.webp 800w, images/g-rekkehus.webp 1400w" sizes="(max-width: 640px) 100vw, 58vw" alt="3D-visualisering av rekkehusprosjekt i skråning med trekledning" width="1400" height="896" loading="lazy" decoding="async"></div>
+          <figcaption><span><b>Prosjekt</b> · Rekkehus</span><span class="idx">08</span></figcaption>
+        </figure>
+        <figure class="g-item w7 r32">
+          <div class="g-media"><img src="images/g-varehus.webp" srcset="images/g-varehus-800.webp 800w, images/g-varehus.webp 1400w" sizes="(max-width: 640px) 100vw, 58vw" alt="3D-visualisering av varehus med solcellepaneler, sett rett ovenfra" width="1400" height="788" loading="lazy" decoding="async"></div>
+          <figcaption><span><b>Næring</b> · Varehus</span><span class="idx">09</span></figcaption>
+        </figure>
+        <figure class="g-item w5 r75">
+          <div class="g-media"><img src="images/g-kveld.webp" srcset="images/g-kveld-800.webp 800w, images/g-kveld.webp 1400w" sizes="(max-width: 640px) 100vw, 42vw" alt="3D-visualisering av stue i kveldslys med vinterutsikt" width="1400" height="950" loading="lazy" decoding="async"></div>
+          <figcaption><span><b>Interiør</b> · Kveld</span><span class="idx">10</span></figcaption>
+        </figure>
+        <figure class="g-item w5 r75">
+          <div class="g-media"><img src="images/g-omraade.webp" srcset="images/g-omraade-800.webp 800w, images/g-omraade.webp 1400w" sizes="(max-width: 640px) 100vw, 42vw" alt="3D-visualisering av boligprosjekt med uteområde og lekeplass" width="1400" height="990" loading="lazy" decoding="async"></div>
+          <figcaption><span><b>Prosjekt</b> · Område</span><span class="idx">11</span></figcaption>
+        </figure>
+        <figure class="g-item w7 r32">
+          <div class="g-media"><img src="images/g-vinter.webp" srcset="images/g-vinter-800.webp 800w, images/g-vinter.webp 1400w" sizes="(max-width: 640px) 100vw, 58vw" alt="Fotomontasje av leilighetsbygg ved fjorden i vinterlys" width="1400" height="1050" loading="lazy" decoding="async"></div>
+          <figcaption><span><b>Fotomontasje</b> · Vinter</span><span class="idx">12</span></figcaption>
+        </figure>
+      </div>
+      <div class="sec-cta reveal">
+        <a class="btn btn-line" href="#prisliste">Få prisliste <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.7"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROSESS ============ -->
+  <section class="section prosess" id="prosess">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow reveal">Prosess</span>
+        <h2 class="reveal" style="transition-delay:.08s">Fra PDF til <em>prospekt.</em></h2>
+        <p class="reveal" style="transition-delay:.16s">En stram og forutsigbar arbeidsflyt. Du sender underlaget, så bygger vi bildene som gjør prosjektet lettere å selge.</p>
+      </div>
+      <div class="steps">
+        <article class="step reveal">
+          <span class="num">01 · Underlag</span>
+          <h3>Send tegninger.</h3>
+          <p>Plan, snitt, fasader og utomhusplan er nok til å starte.</p>
         </article>
-        <article class="process-item reveal" style="transition-delay:.08s">
-          <span class="num">02 / Retning</span>
-          <div>
-            <h3>Velg vinkler.</h3>
-            <p>Du får skisser og anbefalte utsnitt før detaljarbeidet begynner.</p>
-          </div>
+        <article class="step reveal" style="transition-delay:.08s">
+          <span class="num">02 · Retning</span>
+          <h3>Velg vinkler.</h3>
+          <p>Du får skisser og anbefalte utsnitt før detaljarbeidet begynner.</p>
         </article>
-        <article class="process-item reveal" style="transition-delay:.16s">
-          <span class="num">03 / Stemning</span>
-          <div>
-            <h3>Sett scenen.</h3>
-            <p>Materialer, himmel, årstid, vegetasjon, lys og nabolag justeres.</p>
-          </div>
+        <article class="step reveal" style="transition-delay:.16s">
+          <span class="num">03 · Stemning</span>
+          <h3>Sett scenen.</h3>
+          <p>Materialer, himmel, årstid, lys og nabolag justeres til det stemmer.</p>
         </article>
-        <article class="process-item reveal" style="transition-delay:.24s">
-          <span class="num">04 / Salg</span>
-          <div>
-            <h3>Motta bilder.</h3>
-            <p>Ferdige visualiseringer i høy oppløsning, klare for prospekt og kampanje.</p>
-          </div>
+        <article class="step reveal" style="transition-delay:.24s">
+          <span class="num">04 · Salg</span>
+          <h3>Motta bilder.</h3>
+          <p>Ferdige visualiseringer i full oppløsning, klare for prospekt og kampanje.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="portfolio" id="galleri">
+  <!-- ============ KONTAKT + PRISLISTE ============ -->
+  <section class="section contact" id="kontakt">
     <div class="wrap">
-      <div class="section-intro reveal">
-        <div>
-          <span class="eyebrow">Galleri</span>
-          <h2 class="section-title">Bilder som gjør rom <em>forståelige.</em></h2>
+      <div class="contact-top">
+        <div class="contact-intro">
+          <span class="eyebrow reveal">Ta kontakt</span>
+          <h2 class="reveal" style="transition-delay:.08s">Gi prosjektet et bilde <em>før markedet spør.</em></h2>
+          <p class="reveal" style="transition-delay:.16s">Send tegningene eller fortell kort om prosjektet, så får du raskt svar med neste steg og et estimat.</p>
         </div>
-        <p class="section-copy">Eksteriør, interiør, leilighet, terrasse og områdebilder modellert etter teknisk tegning og presentert med riktig stemning for målgruppen.</p>
+        <ul class="contact-links reveal" style="transition-delay:.2s">
+          <li><a href="mailto:ulrik@wabi3d.no?subject=Foresp%C3%B8rsel%20%E2%80%93%20WABI%203D"><span class="k">E-post</span><span class="v">ulrik@wabi3d.no</span></a></li>
+          <li><a href="tel:+4797478982"><span class="k">Telefon</span><span class="v">+47 974 78 982</span></a></li>
+          <li><a href="#prisliste"><span class="k">Priser</span><span class="v">Se våre priser ↓</span></a></li>
+        </ul>
       </div>
-      <div class="portfolio-grid">
-        <article class="work tall reveal" style="transition-delay:.08s">
-          <img src="images/living-warm.jpg" alt="3D visualisering av varm stue med naturlig lys" decoding="async">
-          <div class="work-caption"><span>Interiør / Stue</span><h3>Varme før visning.</h3></div>
-        </article>
-        <article class="work wide reveal">
-          <img src="images/kindgaten-project.jpg" alt="3D visualisering av boligprosjekt med uteområder" decoding="async">
-          <div class="work-caption"><span>Prosjekt / Uteområde</span><h3>Helheten først.</h3></div>
-        </article>
-        <article class="work wide reveal" style="transition-delay:.08s">
-          <img src="images/terrace-evening.jpg" alt="3D visualisering av terrasse i kveldslys" decoding="async">
-          <div class="work-caption"><span>Livsstil / Terrasse</span><h3>Kveldssalget.</h3></div>
-        </article>
-      </div>
-      <div class="gallery-rail" aria-label="Horisontalt bildegalleri">
-        <figure class="rail-card">
-          <img src="images/living-bright.jpg" alt="Lyst interiør med panoramavinduer" decoding="async">
-          <span>Interiør / Leilighet</span>
-        </figure>
-        <figure class="rail-card">
-          <img src="images/villa-mountain.jpg" alt="Moderne villa i fjellandskap" decoding="async">
-          <span>Eksteriør / Fjell</span>
-        </figure>
-        <figure class="rail-card">
-          <img src="images/cabin-interior.jpg" alt="Hytteinteriør med naturmaterialer" decoding="async">
-          <span>Interiør / Hytte</span>
-        </figure>
-        <figure class="rail-card">
-          <img src="images/villa-green.jpg" alt="3D visualisering av moderne trevilla i grønt landskap" decoding="async">
-          <span>Eksteriør / Boligfelt</span>
-        </figure>
-      </div>
-    </div>
-  </section>
 
-  <section class="split" id="hvem">
-    <div class="split-media">
-      <img src="images/house-panorama.jpg" alt="3D visualisering av trehus med fjellpanorama" decoding="async">
-    </div>
-    <div class="split-content">
-      <span class="eyebrow">For hvem</span>
-      <h2>Bygget for prosjekter som skal selges før de står.</h2>
-      <p>WABI 3D jobber der visualiseringen må tåle både førsteinntrykket på Finn.no og detaljblikket fra en kjøper. Vi kombinerer teknisk underlag med bildeinstinkt, slik at boligen føles konkret.</p>
-      <div class="audiences">
-        <article class="audience">
-          <b>01</b>
-          <div><h3>Eiendomsutviklere</h3><p>Presentér et ferdig produkt før byggestart, uten friksjon og uten storselskaps-pris.</p></div>
-        </article>
-        <article class="audience">
-          <b>02</b>
-          <div><h3>Meglere</h3><p>Gi prospekt, kampanje og visningsmateriell bilder som skaper trygghet raskt.</p></div>
-        </article>
-        <article class="audience">
-          <b>03</b>
-          <div><h3>Kommuner og presse</h3><p>Vis hva prosjektet gjør med stedet, ikke bare hvordan fasaden ser ut.</p></div>
-        </article>
-      </div>
-    </div>
-  </section>
+      <!-- Closing conversion module: email gate → unlock prisliste -->
+      <div class="lead-card reveal" id="prisliste">
+        <div class="lead-grid">
+          <div class="lead-copy">
+            <span class="eyebrow">Prisliste 2026</span>
+            <h2 class="lead-title">Nytt prosjekt på gang? <em>Se prisene våre her.</em></h2>
+            <p class="lead-sub">Legg igjen e-posten din, så låser vi opp hele prislisten med én gang. Ingen forpliktelser.</p>
+            <ul class="lead-points">
+              <li>Faste pakkepriser</li>
+              <li>Pris pr. enkeltbilde</li>
+              <li>Tillegg &amp; plantegninger</li>
+            </ul>
+          </div>
 
-  <section class="pricing" id="priser">
-    <div class="wrap">
-      <div class="pricing-intro reveal">
-        <div>
-          <span class="eyebrow">Prisliste 2026</span>
-          <h2>Norgespakkene.</h2>
-        </div>
-        <p class="pricing-copy">Fastpris uten overraskelser. Tre pakkeløsninger for prosjekter i alle størrelser, med mulighet for enkeltbilder og tilleggsleveranser når du trenger det.</p>
-      </div>
-      <div class="pricing-grid">
-        <article class="price-card reveal">
-          <div class="price-head">
-            <div>
-              <span class="price-label">01 / Lite</span>
-              <h3>For mindre prosjekter.</h3>
+          <div class="lead-action">
+            <form class="lead-form" id="leadForm" novalidate>
+              <div class="lead-field">
+                <label class="sr-only" for="leadEmail">E-postadresse</label>
+                <input class="lead-input" id="leadEmail" name="email" type="email" inputmode="email" autocomplete="email" placeholder="din@epost.no" required>
+                <button class="btn btn-white" type="submit">Lås opp prisliste <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.7"/></svg></button>
+              </div>
+              <p class="lead-status" id="leadStatus" role="status" aria-live="polite"></p>
+              <p class="lead-consent">Vi bruker e-posten kun for å sende prislisten og eventuell oppfølging. Du kan melde deg av når som helst.</p>
+            </form>
+
+            <div class="lead-done" id="leadDone" hidden>
+              <span class="check"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9.5 7 13l8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Prislisten er låst opp</span>
+              <a class="btn btn-white" id="leadDownload" href="prisliste.pdf" download>Last ned prisliste (PDF) <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v9m0 0L4 7m4 4 4-4M3 14h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <p class="lead-done-note">Takk! Lenken ligger klar over. <button type="button" class="linklike" id="leadReset">Bruk en annen e-post</button></p>
             </div>
-            <strong class="price-amount">15 600,-</strong>
           </div>
-          <p class="price-summary">Et oversiktlig startnivå for mindre boligprosjekter og tidlige salgsfaser.</p>
-          <ul class="price-list" role="list">
-            <li>4 visualiseringer</li>
-            <li>3 revisjoner inkludert</li>
-            <li>Første utkast på 10 dager</li>
-          </ul>
-          <p class="price-note">Eks. mva. Tilsvarer 3 900,- pr. bilde.</p>
-        </article>
-        <article class="price-card featured reveal" style="transition-delay:.08s">
-          <span class="price-chip">Mest valgt</span>
-          <div class="price-head">
-            <div>
-              <span class="price-label">02 / Medium</span>
-              <h3>For et fullstendig prosjekt.</h3>
-            </div>
-            <strong class="price-amount">29 800,-</strong>
-          </div>
-          <p class="price-summary">Den mest balanserte pakken for utviklere og meglere som trenger en komplett salgspresentasjon.</p>
-          <ul class="price-list" role="list">
-            <li>8 visualiseringer</li>
-            <li>Ubegrensede revisjoner</li>
-            <li>Første utkast på 6-8 dager</li>
-          </ul>
-          <p class="price-note">Eks. mva. Tilsvarer 3 850,- pr. bilde.</p>
-        </article>
-        <article class="price-card reveal" style="transition-delay:.16s">
-          <div class="price-head">
-            <div>
-              <span class="price-label">03 / Premium</span>
-              <h3>Hele pakken samlet.</h3>
-            </div>
-            <strong class="price-amount">82 300,-</strong>
-          </div>
-          <p class="price-summary">For større lanseringer der bolig, uteområder og markedsmateriell må henge sømløst sammen.</p>
-          <ul class="price-list" role="list">
-            <li>15+ visualiseringer</li>
-            <li>3D Premium plantegninger</li>
-            <li>Egen prosjektnettside</li>
-            <li>Byggeplassbanner</li>
-            <li>Ubegrensede revisjoner</li>
-            <li>Prioritert utkast på 5-7 dager</li>
-          </ul>
-          <p class="price-note">Eks. mva. Basert på 15 visualiseringer, 4 plantegninger og prosjektnettside.</p>
-        </article>
-      </div>
-      <div class="pricing-extras reveal">
-        <article class="pricing-extra">
-          <span>Enkeltvis</span>
-          <strong>3 900,-</strong>
-          <p>Pr. bilde, fastpris.</p>
-        </article>
-        <article class="pricing-extra">
-          <span>Plantegning</span>
-          <strong>Fra 790,-</strong>
-          <p>Pr. etasje.</p>
-        </article>
-        <article class="pricing-extra">
-          <span>Tillegg</span>
-          <strong>På forespørsel</strong>
-          <p>Meta-annonsering og ekstra leveranser.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="contact" id="kontakt">
-    <div class="wrap">
-      <div class="contact-panel reveal">
-        <div>
-          <span class="eyebrow">Ta kontakt</span>
-          <h2>Gi prosjektet et bilde før markedet spør.</h2>
-          <p>Send oss tegningene eller fortell kort om prosjektet. Vi svarer raskt med neste steg, estimat og hva vi trenger for å komme i gang.</p>
-        </div>
-        <div class="contact-actions">
-          <a class="btn btn-primary" href="mailto:ulrik@wabi3d.no?subject=Tilbudsforesp%C3%B8rsel%20%E2%80%93%20WABI%203D">Send e-post <svg viewBox="0 0 16 16" fill="none"><path d="M2 8h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.7"/></svg></a>
-          <a class="contact-link" href="mailto:ulrik@wabi3d.no"><span>E-post</span><span>ulrik@wabi3d.no</span></a>
         </div>
       </div>
-      <footer class="footer">
-        <span>© <span id="year">2026</span> WABI 3D AS. Alle rettigheter forbeholdt.</span>
-        <span>wabi3d.no</span>
-      </footer>
     </div>
   </section>
 </main>
 
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span class="fbrand"><img src="images/wabi-logo-black.svg" alt="" aria-hidden="true">WABI 3D AS</span>
+    <span>© <span id="year">2026</span> WABI 3D AS. Fotorealistisk 3D-visualisering for eiendom.</span>
+    <span>wabi3d.no</span>
+  </div>
+</footer>
+
+<!-- GSAP + ScrollTrigger + Lenis (CDN). Site degrades gracefully if these fail to load. -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 <script>
-document.getElementById("year").textContent = new Date().getFullYear();
+(function(){
+  "use strict";
+  var REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var COARSE  = window.matchMedia("(pointer: coarse)").matches;
+  var hasGSAP = !!(window.gsap && window.ScrollTrigger);
 
-const io = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("in");
-      io.unobserve(entry.target);
+  var y = document.getElementById("year"); if (y) y.textContent = new Date().getFullYear();
+
+  /* Fallback path: no GSAP (offline / blocked CDN) or reduced motion —
+     everything static and fully visible. Stats keep their prefilled values. */
+  function staticReveal(){
+    document.querySelectorAll(".reveal, .g-item").forEach(function(e){ e.classList.add("in"); });
+  }
+
+  /* Hero background video — starts after load, loops; poster stays for
+     reduced motion, save-data, and no-JS. Mobile gets the smaller file. */
+  (function heroVideo(){
+    var v = document.getElementById("heroVideo");
+    if (!v || REDUCED) return;
+    var conn = navigator.connection;
+    if (conn && conn.saveData) return;
+    function start(){
+      var mobile = window.matchMedia("(max-width: 640px)").matches;
+      v.src = v.getAttribute(mobile ? "data-src-mobile" : "data-src");
+      v.addEventListener("playing", function(){ v.classList.add("on"); }, { once:true });
+      var p = v.play();
+      if (p && p.catch) p.catch(function(){});
     }
+    function later(){ setTimeout(start, 400); }
+    if (document.readyState === "complete") later();
+    else window.addEventListener("load", later, { once:true });
+  })();
+
+  if (!hasGSAP || REDUCED){
+    staticReveal();
+    setupLead();
+    return;
+  }
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ---- Lenis smooth scroll + anchor navigation ---- */
+  var lenis = null;
+  if (window.Lenis){
+    lenis = new Lenis({ lerp:0.1, smoothWheel:true });
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
+    gsap.ticker.lagSmoothing(0);
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener("click", function(e){
+      var id = a.getAttribute("href"); if (id.length < 2) return;
+      var t = document.querySelector(id); if (!t) return;
+      e.preventDefault();
+      if (lenis) lenis.scrollTo(t, { offset:-72, duration:1.1 });
+      else t.scrollIntoView({ behavior:"smooth" });
+    });
   });
-}, { threshold: 0.16, rootMargin: "0px 0px -40px 0px" });
 
-document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+  /* ---- Hero: slow camera settle — scrubbed scale 1.08→1.0 + gentle parallax ---- */
+  (function hero(){
+    var media = document.querySelector(".hero-media");
+    if (!media) return;
+    gsap.fromTo(media, { scale:1.08, yPercent:0 }, { scale:1, yPercent:4, ease:"none",
+      scrollTrigger:{ trigger:".hero", start:"top top", end:"bottom top", scrub:true } });
+  })();
 
-const glow = document.querySelector(".cursor-glow");
-window.addEventListener("pointermove", (event) => {
-  glow.style.left = `${event.clientX}px`;
-  glow.style.top = `${event.clientY}px`;
-});
-
-const railCards = document.querySelectorAll(".rail-card img");
-window.addEventListener("scroll", () => {
-  railCards.forEach((img) => {
-    const rect = img.parentElement.getBoundingClientRect();
-    const shift = ((rect.left + rect.width / 2) / window.innerWidth - .5) * -34;
-    img.style.setProperty("--shift", `${shift}px`);
+  /* ---- Generic reveals: soft fade + rise, once ---- */
+  gsap.utils.toArray(".reveal").forEach(function(el){
+    ScrollTrigger.create({ trigger:el, start:"top 88%", once:true,
+      onEnter:function(){ el.classList.add("in"); } });
   });
-}, { passive: true });
+
+  /* ---- Featured render: drone push-in (pinned on fine pointers only) ---- */
+  (function featured(){
+    var sec = document.getElementById("featured");
+    if (!sec) return;
+    var img = sec.querySelector(".featured-media img");
+    var cap = sec.querySelector(".featured-cap");
+    if (COARSE){
+      gsap.fromTo(img, { scale:1.12 }, { scale:1, ease:"none",
+        scrollTrigger:{ trigger:sec, start:"top bottom", end:"bottom top", scrub:true } });
+      gsap.from(cap, { y:30, opacity:0, duration:1, ease:"power3.out",
+        scrollTrigger:{ trigger:sec, start:"top 62%", once:true } });
+      return;
+    }
+    var tl = gsap.timeline({ scrollTrigger:{ trigger:sec, start:"top top", end:"+=85%",
+      pin:".featured-pin", scrub:.6, anticipatePin:1 } });
+    tl.fromTo(img, { scale:1.15, yPercent:-2 }, { scale:1, yPercent:0, ease:"none" }, 0)
+      .fromTo(cap, { y:44, opacity:0 }, { y:0, opacity:1, ease:"power2.out", duration:.45 }, .12);
+  })();
+
+  /* ---- Gallery: consistent bottom-up wipe, slight stagger per column ---- */
+  gsap.utils.toArray(".g-item").forEach(function(item, i){
+    ScrollTrigger.create({ trigger:item, start:"top 86%", once:true,
+      onEnter:function(){ gsap.delayedCall((i % 2) * 0.1, function(){ item.classList.add("in"); }); } });
+  });
+
+  /* ---- Stats count up once ---- */
+  (function counters(){
+    function fmt(n, sep){
+      var s = String(n);
+      if (!sep) return s;
+      return s.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    }
+    document.querySelectorAll("[data-count]").forEach(function(el){
+      var target = parseInt(el.getAttribute("data-count"), 10);
+      var prefix = el.getAttribute("data-prefix") || "";
+      var suffixAttr = el.getAttribute("data-suffix") || "";
+      var suffix = suffixAttr.replace(/&nbsp;/g, " ");
+      var sep = el.getAttribute("data-sep") !== "false";
+      var obj = { v:0 };
+      gsap.to(obj, { v:target, duration:1.8, ease:"power2.out",
+        scrollTrigger:{ trigger:el, start:"top 92%", once:true },
+        onUpdate:function(){ el.textContent = prefix + fmt(Math.round(obj.v), sep) + suffix; } });
+    });
+  })();
+
+  setupLead();
+
+  /* ============================================================
+     LEAD CAPTURE — email gate → unlock prisliste download
+     ============================================================
+     Configure these two constants:
+       LEAD_ENDPOINT  – POST target that receives the captured emails.
+                        Paste a Formspree / Getform / webhook URL here to start
+                        collecting leads. Leave "" to run download-only (the page
+                        still unlocks the PDF, you just won't receive the email).
+       PRISLISTE_URL  – the file the visitor downloads. Drop your own PDF in at
+                        this path to replace the generated placeholder.            */
+  function setupLead(){
+    var LEAD_ENDPOINT = "";              // <-- lim inn ditt skjema-/webhook-endepunkt
+    var PRISLISTE_URL = "prisliste.pdf"; // <-- bytt ut med din egen prisliste
+
+    var form = document.getElementById("leadForm");
+    var input = document.getElementById("leadEmail");
+    var status = document.getElementById("leadStatus");
+    var done = document.getElementById("leadDone");
+    var dl = document.getElementById("leadDownload");
+    var reset = document.getElementById("leadReset");
+    if (!form) return;
+    if (dl) dl.setAttribute("href", PRISLISTE_URL);
+
+    var STORE = "wabi_lead_email";
+    var valid = function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); };
+
+    function unlock(silent){
+      form.hidden = true; form.style.display = "none";
+      done.hidden = false;
+      if (!silent && dl){ try { dl.focus({ preventScroll:true }); } catch(e){} }
+    }
+    function relock(){
+      done.hidden = true;
+      form.hidden = false; form.style.display = "";
+      status.textContent = ""; status.className = "lead-status";
+      input.value = ""; input.focus();
+      try { localStorage.removeItem(STORE); } catch(e){}
+    }
+
+    // Returning visitor: skip the gate.
+    try { if (localStorage.getItem(STORE)) unlock(true); } catch(e){}
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      var email = (input.value || "").trim();
+      if (!valid(email)){
+        input.classList.add("err");
+        status.className = "lead-status";
+        status.textContent = "Skriv inn en gyldig e-postadresse.";
+        input.focus();
+        return;
+      }
+      input.classList.remove("err");
+      status.className = "lead-status ok";
+      status.textContent = "Låser opp …";
+
+      try { localStorage.setItem(STORE, email); } catch(e){}
+
+      // Fire the lead off to the endpoint (non-blocking). Download unlocks regardless.
+      if (LEAD_ENDPOINT){
+        try {
+          fetch(LEAD_ENDPOINT, {
+            method:"POST",
+            headers:{ "Content-Type":"application/json", "Accept":"application/json" },
+            body: JSON.stringify({ email:email, kilde:"wabi3d.no – prisliste", tid:new Date().toISOString() })
+          }).catch(function(){});
+        } catch(e){}
+      }
+      setTimeout(unlock, 250);
+    });
+
+    input.addEventListener("input", function(){ input.classList.remove("err"); });
+    if (reset) reset.addEventListener("click", relock);
+  }
+})();
 </script>
 </body>
 </html>

@@ -7,3 +7,4 @@ deployment:
     - /bin/cp favicon.png $DEPLOYPATH
     - /bin/cp favicon.svg $DEPLOYPATH
     - /bin/cp llms.txt $DEPLOYPATH
+    - /bin/cp prisliste.pdf $DEPLOYPATH
