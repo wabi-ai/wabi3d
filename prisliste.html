@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="UTF-8">
+<title>WABI 3D — Prisliste 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0d1626; --soft:#5c6678; --faint:#9aa3b2;
+  --blue:#1e4fd6; --wash:#eef3fd; --line:rgba(13,22,38,.14);
+  --serif:"Playfair Display",Georgia,serif; --sans:"Manrope",Arial,sans-serif;
+}
+@page{ size:A4; margin:14mm 13mm; }
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body{
+  font-family:var(--sans); color:var(--ink); font-size:10.5px; line-height:1.5;
+  background:
+    linear-gradient(90deg, rgba(30,79,214,.05) 1px, transparent 1px) 0 0 / 34px 34px,
+    linear-gradient(180deg, rgba(30,79,214,.05) 1px, transparent 1px) 0 0 / 34px 34px,
+    #fff;
+}
+.sheet{ max-width:184mm; margin:0 auto; }
+
+/* Header */
+.top{ display:flex; justify-content:space-between; align-items:flex-end; padding-bottom:14px; border-bottom:2px solid var(--ink); }
+.brand{ font-weight:800; font-size:19px; letter-spacing:.16em; }
+.brand i{ font-style:normal; color:var(--blue); }
+.brand-sub{ margin-top:4px; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--soft); }
+.eyebrow{ color:var(--blue); font-size:9px; font-weight:800; letter-spacing:.22em; text-transform:uppercase; }
+.top-right{ text-align:right; }
+.top-right .yr{ font-family:var(--serif); font-size:30px; line-height:1; letter-spacing:-.02em; }
+
+.lede{ margin:18px 0 16px; display:flex; justify-content:space-between; gap:24px; align-items:flex-end; }
+.lede h1{ font-family:var(--serif); font-weight:500; font-size:30px; line-height:1; letter-spacing:-.02em; max-width:62%; }
+.lede h1 em{ color:var(--blue); font-style:italic; }
+.lede p{ max-width:34%; color:var(--soft); font-size:10px; }
+
+/* Package cards */
+.cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid var(--line); border-radius:6px; overflow:hidden; }
+.card{ padding:16px 16px 18px; border-right:1px solid var(--line); display:flex; flex-direction:column; min-height:236px; }
+.card:last-child{ border-right:none; }
+.card.feat{ background:var(--ink); color:#fff; }
+.card.feat .label,.card.feat .summary,.card.feat li,.card.feat .note{ color:rgba(255,255,255,.82); }
+.card.feat .amount{ color:#fff; }
+.chip{ align-self:flex-start; font-size:7.5px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:#fff; background:var(--blue); padding:4px 8px; border-radius:99px; margin-bottom:10px; }
+.label{ font-size:9px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--faint); }
+.card h2{ font-family:var(--serif); font-weight:500; font-size:17px; letter-spacing:-.02em; margin:5px 0 8px; line-height:1.05; }
+.amount{ font-family:var(--serif); font-size:26px; letter-spacing:-.03em; line-height:1; }
+.amount small{ font-size:11px; color:var(--soft); }
+.summary{ color:var(--soft); margin:8px 0 10px; font-size:9.5px; }
+.list{ list-style:none; display:grid; gap:6px; margin-top:auto; }
+.list li{ padding-top:6px; border-top:1px solid var(--line); font-size:10px; }
+.card.feat .list li{ border-top-color:rgba(255,255,255,.16); }
+.list li b{ color:var(--blue); }
+.card.feat .list li b{ color:#9fc0ff; }
+.note{ margin-top:10px; font-size:8.5px; color:var(--faint); }
+
+/* Extras */
+.extras{ display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid var(--line); border-top:none; border-radius:0 0 6px 6px; overflow:hidden; }
+.extra{ padding:12px 16px; border-right:1px solid var(--line); }
+.extra:last-child{ border-right:none; }
+.extra .label{ color:var(--faint); }
+.extra strong{ display:block; font-family:var(--serif); font-weight:500; font-size:18px; letter-spacing:-.02em; margin-top:5px; }
+.extra span.d{ display:block; color:var(--soft); margin-top:3px; font-size:9px; }
+
+.foot{ margin-top:16px; display:flex; justify-content:space-between; align-items:center; gap:16px; padding-top:12px; border-top:1px solid var(--line); }
+.foot .contact{ display:flex; gap:18px; flex-wrap:wrap; font-size:10px; }
+.foot .contact b{ color:var(--blue); }
+.foot .terms{ color:var(--faint); font-size:8.5px; text-align:right; max-width:48%; }
+.cta{ margin-top:14px; background:var(--wash); border:1px solid rgba(30,79,214,.22); border-radius:6px; padding:12px 16px; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+.cta b{ font-family:var(--serif); font-weight:500; font-size:14px; }
+.cta span{ font-size:9.5px; color:var(--soft); }
+.cta .pill{ background:var(--ink); color:#fff; font-size:9px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; padding:9px 14px; border-radius:99px; white-space:nowrap; }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="top">
+    <div>
+      <div class="brand">WABI<i>3D</i></div>
+      <div class="brand-sub">Fotorealistisk 3D-visualisering for eiendom</div>
+    </div>
+    <div class="top-right">
+      <div class="eyebrow">Prisliste</div>
+      <div class="yr">2026</div>
+    </div>
+  </div>
+
+  <div class="lede">
+    <h1>Faste priser — <em>fra tegning til ferdig prosjekt.</em></h1>
+    <p>Tre pakker for prosjekter i alle størrelser, med enkeltbilder og tillegg når du trenger det. Alle priser eks. mva.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <span class="label">01 / Lite</span>
+      <h2>For mindre prosjekter</h2>
+      <div class="amount">15&nbsp;600,<small>–</small></div>
+      <p class="summary">Et oversiktlig startnivå for mindre boligprosjekter og tidlige salgsfaser.</p>
+      <ul class="list">
+        <li><b>4</b> visualiseringer</li>
+        <li><b>3</b> revisjoner inkludert</li>
+        <li>Første utkast på <b>10</b> dager</li>
+      </ul>
+      <div class="note">Tilsvarer 3&nbsp;900,– pr. bilde.</div>
+    </div>
+
+    <div class="card feat">
+      <span class="chip">Mest valgt</span>
+      <span class="label">02 / Medium</span>
+      <h2>Et fullstendig prosjekt</h2>
+      <div class="amount">29&nbsp;800,<small>–</small></div>
+      <p class="summary">Den mest balanserte pakken for en komplett salgspresentasjon.</p>
+      <ul class="list">
+        <li><b>8</b> visualiseringer</li>
+        <li><b>Ubegrensede</b> revisjoner</li>
+        <li>Første utkast på <b>6–8</b> dager</li>
+      </ul>
+      <div class="note">Tilsvarer 3&nbsp;850,– pr. bilde.</div>
+    </div>
+
+    <div class="card">
+      <span class="label">03 / Premium</span>
+      <h2>Hele pakken samlet</h2>
+      <div class="amount">82&nbsp;300,<small>–</small></div>
+      <p class="summary">For større lanseringer der bolig, uteområder og markedsmateriell henger sømløst sammen.</p>
+      <ul class="list">
+        <li><b>15+</b> visualiseringer</li>
+        <li>3D Premium plantegninger</li>
+        <li>Egen prosjektnettside</li>
+        <li>Byggeplassbanner + ubegr. revisjoner</li>
+      </ul>
+      <div class="note">Prioritert utkast på 5–7 dager.</div>
+    </div>
+  </div>
+
+  <div class="extras">
+    <div class="extra"><span class="label">Enkeltvis</span><strong>3&nbsp;900,–</strong><span class="d">Pr. bilde, fastpris.</span></div>
+    <div class="extra"><span class="label">Plantegning</span><strong>Fra 790,–</strong><span class="d">Pr. etasje.</span></div>
+    <div class="extra"><span class="label">Tillegg</span><strong>På forespørsel</strong><span class="d">Meta-annonsering &amp; ekstra leveranser.</span></div>
+  </div>
+
+  <div class="cta">
+    <div>
+      <b>Nytt prosjekt på gang?</b>
+      <span> &nbsp;Send tegningene, så får du et konkret estimat innen kort tid.</span>
+    </div>
+    <span class="pill">ulrik@wabi3d.no</span>
+  </div>
+
+  <div class="foot">
+    <div class="contact">
+      <span><b>E-post</b> &nbsp;ulrik@wabi3d.no</span>
+      <span><b>Telefon</b> &nbsp;+47 974 78 982</span>
+      <span><b>Web</b> &nbsp;wabi3d.no</span>
+    </div>
+    <div class="terms">Priser eks. mva. og kan justeres etter prosjektets omfang. Gyldig 2026. © WABI 3D AS.</div>
+  </div>
+</div>
+</body>
+</html>

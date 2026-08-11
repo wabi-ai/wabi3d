@@ -16,3 +16,6 @@ images/resident*
 images/villa\ *
 images/apartment*
 images/interior\ *
+
+# Local Claude Code config / skills
+.claude/
