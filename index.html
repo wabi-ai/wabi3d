@@ -400,6 +400,24 @@ html.lenis,html.lenis body{height:auto}
 .lead-done .check{display:inline-flex;align-items:center;gap:10px;color:#bfe6c8;font-weight:700;font-size:14px}
 .lead-done .btn{width:100%}
 .lead-done-note{font-size:13px;color:rgba(206,219,248,.7)}
+
+/* Both price lists unlock at once — one row per PDF, name over a price hint */
+.lead-files{display:grid;gap:10px}
+.lead-file{
+  display:flex;align-items:center;gap:16px;min-height:64px;padding:13px 22px;
+  border-radius:14px;background:#fff;color:var(--ink);
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+.lead-file:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(6,10,20,.28)}
+.lead-file-text{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}
+.lead-file-name{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.lead-file-tag{
+  display:inline-block;margin-left:6px;padding:3px 8px;border-radius:999px;
+  background:#eef3fd;color:var(--blue);
+  font-size:9px;font-style:normal;font-weight:800;letter-spacing:.1em;vertical-align:middle;
+}
+.lead-file-meta{font-size:12px;font-weight:600;color:var(--ink-soft)}
+.lead-file > svg{flex:none;width:16px;height:16px}
 .linklike{background:none;border:none;padding:0;color:var(--blue-soft);text-decoration:underline;text-underline-offset:2px;cursor:pointer;font-size:13px}
 
 /* ---------- Footer ---------- */
@@ -727,11 +745,11 @@ html.lenis,html.lenis body{height:auto}
           <div class="lead-copy">
             <span class="eyebrow">Prisliste 2026</span>
             <h2 class="lead-title">Nytt prosjekt på gang? <em>Se prisene våre her.</em></h2>
-            <p class="lead-sub">Legg igjen e-posten din, så låser vi opp hele prislisten med én gang. Ingen forpliktelser.</p>
+            <p class="lead-sub">Legg igjen e-posten din, så låser vi opp begge prislistene med én gang. Ingen forpliktelser.</p>
             <ul class="lead-points">
-              <li>Faste pakkepriser</li>
+              <li>Norgespakkene</li>
+              <li>Premiumpakkene</li>
               <li>Pris pr. enkeltbilde</li>
-              <li>Tillegg &amp; plantegninger</li>
             </ul>
           </div>
 
@@ -747,9 +765,24 @@ html.lenis,html.lenis body{height:auto}
             </form>
 
             <div class="lead-done" id="leadDone" hidden>
-              <span class="check"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9.5 7 13l8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Prislisten er låst opp</span>
-              <a class="btn btn-white" id="leadDownload" href="prisliste.pdf" download>Last ned prisliste (PDF) <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v9m0 0L4 7m4 4 4-4M3 14h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-              <p class="lead-done-note">Takk! Lenken ligger klar over. <button type="button" class="linklike" id="leadReset">Bruk en annen e-post</button></p>
+              <span class="check"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9.5 7 13l8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Prislistene er låst opp</span>
+              <div class="lead-files">
+                <a class="lead-file" id="leadDownload" href="norgespakkene-2026.pdf" download>
+                  <span class="lead-file-text">
+                    <span class="lead-file-name">Norgespakkene 2026</span>
+                    <span class="lead-file-meta">Fra 15 200,- · 3 900,- pr. bilde</span>
+                  </span>
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v9m0 0L4 7m4 4 4-4M3 14h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a class="lead-file" href="premiumpakkene-2026.pdf" download>
+                  <span class="lead-file-text">
+                    <span class="lead-file-name">Premiumpakkene 2026 <i class="lead-file-tag">Beste kvalitet</i></span>
+                    <span class="lead-file-meta">Fra 22 900,- · 5 900,- pr. bilde</span>
+                  </span>
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v9m0 0L4 7m4 4 4-4M3 14h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+              <p class="lead-done-note">Takk! Begge listene ligger klar over. <button type="button" class="linklike" id="leadReset">Bruk en annen e-post</button></p>
             </div>
           </div>
         </div>
@@ -941,7 +974,6 @@ html.lenis,html.lenis body{height:auto}
                         this path to replace the generated placeholder.            */
   function setupLead(){
     var LEAD_ENDPOINT = "https://formsubmit.co/ajax/ulrik@wabi3d.no"; // varsler ulrik@wabi3d.no om nye leads
-    var PRISLISTE_URL = "prisliste.pdf"; // <-- bytt ut med din egen prisliste
 
     var form = document.getElementById("leadForm");
     var input = document.getElementById("leadEmail");
@@ -950,7 +982,6 @@ html.lenis,html.lenis body{height:auto}
     var dl = document.getElementById("leadDownload");
     var reset = document.getElementById("leadReset");
     if (!form) return;
-    if (dl) dl.setAttribute("href", PRISLISTE_URL);
 
     var STORE = "wabi_lead_email";
     var valid = function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); };
@@ -987,18 +1018,50 @@ html.lenis,html.lenis body{height:auto}
 
       try { localStorage.setItem(STORE, email); } catch(e){}
 
-      // Fire the lead off to the endpoint (non-blocking). Download unlocks regardless.
-      if (LEAD_ENDPOINT){
-        try {
-          fetch(LEAD_ENDPOINT, {
-            method:"POST",
-            headers:{ "Content-Type":"application/json", "Accept":"application/json" },
-            body: JSON.stringify({ email:email, kilde:"wabi3d.no – prisliste", tid:new Date().toISOString(), _subject:"Ny prisliste-forespørsel fra " + email })
-          }).catch(function(){});
-        } catch(e){}
-      }
+      // Fire the lead off to the endpoint (non-blocking) — the download unlocks
+      // regardless, so a dead endpoint never costs us the conversion. One retry
+      // covers the usual transient failure; sendBeacon is the last resort and
+      // survives the visitor closing the tab straight after submitting.
+      notify(email);
       setTimeout(unlock, 250);
     });
+
+    function payload(email){
+      return {
+        email: email,
+        kilde: "wabi3d.no – prisliste",
+        tid: new Date().toISOString(),
+        _subject: "Ny prisliste-forespørsel fra " + email
+      };
+    }
+
+    function notify(email){
+      if (!LEAD_ENDPOINT) return;
+      var body = JSON.stringify(payload(email));
+      var opts = {
+        method:"POST",
+        headers:{ "Content-Type":"application/json", "Accept":"application/json" },
+        body: body
+      };
+      function beacon(){
+        try {
+          if (navigator.sendBeacon){
+            navigator.sendBeacon(LEAD_ENDPOINT, new Blob([body], { type:"application/json" }));
+          }
+        } catch(e){}
+      }
+      try {
+        fetch(LEAD_ENDPOINT, opts)
+          .then(function(r){ if (!r.ok) throw new Error(r.status); })
+          .catch(function(){
+            setTimeout(function(){
+              fetch(LEAD_ENDPOINT, opts)
+                .then(function(r){ if (!r.ok) throw new Error(r.status); })
+                .catch(beacon);
+            }, 2000);
+          });
+      } catch(e){ beacon(); }
+    }
 
     input.addEventListener("input", function(){ input.classList.remove("err"); });
     if (reset) reset.addEventListener("click", relock);

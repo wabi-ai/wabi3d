@@ -8,3 +8,5 @@ deployment:
     - /bin/cp favicon.svg $DEPLOYPATH
     - /bin/cp llms.txt $DEPLOYPATH
     - /bin/cp prisliste.pdf $DEPLOYPATH
+    - /bin/cp norgespakkene-2026.pdf $DEPLOYPATH
+    - /bin/cp premiumpakkene-2026.pdf $DEPLOYPATH
