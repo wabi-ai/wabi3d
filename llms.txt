@@ -32,7 +32,6 @@ Vi er bygget for eiendomsutviklere. Store nok til å levere på industrinivå, s
 
 Vi leverer for blant andre:
 - DNB Eiendom
-- PrivatMegleren
 - Agder Bolig Entreprenør
 - &Partners
 
