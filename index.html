@@ -8,7 +8,7 @@
 <meta name="keywords" content="3D visualisering eiendom, fotorealistisk 3D, eiendomsutvikling, arkitekturvisualisering, 3D illustrasjon bolig, 3D rendering Norge">
 <meta name="google-site-verification" content="C4VzQ6UCuJUzt5elv7xeD37ieCULXD4KmThdGzuRPwI">
 <meta name="author" content="WABI 3D AS">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:title" content="WABI 3D | Fotorealistisk 3D for eiendom">
 <meta property="og:description" content="Arkitekturvisualisering for utviklere som vil selge prosjektet før første spadetak.">
@@ -23,7 +23,7 @@
 <meta name="twitter:image" content="https://wabi3d.no/images/5.jpg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="canonical" href="https://wabi3d.no">
+<link rel="canonical" href="https://wabi3d.no/">
 <link rel="preload" as="image" href="images/hero-poster.webp" imagesrcset="images/hero-poster-800.webp 800w, images/hero-poster.webp 1280w" imagesizes="100vw" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,19 +34,53 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "WABI 3D",
-  "description": "Fotorealistisk 3D visualisering for eiendomsutviklere i Norge.",
-  "url": "https://wabi3d.no",
-  "logo": "https://wabi3d.no/favicon.svg",
-  "image": "https://wabi3d.no/images/5.jpg",
-  "email": "ulrik@wabi3d.no",
-  "telephone": "+4797478982",
-  "address": { "@type": "PostalAddress", "addressCountry": "NO" },
-  "areaServed": { "@type": "Country", "name": "Norway" },
-  "serviceType": ["3D Visualisering", "Arkitekturvisualisering", "Fotorealistisk 3D rendering", "Eiendomsvisualisering"],
-  "foundingDate": "2019",
-  "priceRange": "$$"
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://wabi3d.no/#organization",
+      "name": "WABI 3D",
+      "legalName": "WABI 3D AS",
+      "description": "Fotorealistisk 3D visualisering for eiendomsutviklere i Norge.",
+      "url": "https://wabi3d.no/",
+      "logo": "https://wabi3d.no/favicon.svg",
+      "image": "https://wabi3d.no/images/p-featured.webp",
+      "email": "ulrik@wabi3d.no",
+      "telephone": "+4797478982",
+      "address": { "@type": "PostalAddress", "addressCountry": "NO" },
+      "areaServed": [
+        { "@type": "Country", "name": "Norge" },
+        { "@type": "Country", "name": "Sverige" },
+        { "@type": "Country", "name": "Danmark" },
+        { "@type": "Country", "name": "Finland" }
+      ],
+      "availableLanguage": ["nb", "sv", "da", "en"],
+      "serviceType": ["3D visualisering eiendom", "Arkitekturvisualisering", "Fotorealistisk 3D rendering", "Eiendomsvisualisering", "Fotomontasje", "Boligvelger"],
+      "knowsAbout": ["3D visualisering", "Arkitekturvisualisering", "Fotomontasje", "Prosjektillustrasjon", "Boligvelger", "Eiendomsutvikling"],
+      "foundingDate": "2019",
+      "priceRange": "$$",
+      "makesOffer": {
+        "@type": "Offer",
+        "itemOffered": { "@id": "https://wabi3d.no/3d-visualisering-eiendom/#service" }
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://wabi3d.no/#website",
+      "url": "https://wabi3d.no/",
+      "name": "WABI 3D",
+      "inLanguage": "nb-NO",
+      "publisher": { "@id": "https://wabi3d.no/#organization" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://wabi3d.no/#webpage",
+      "url": "https://wabi3d.no/",
+      "name": "WABI 3D | Fotorealistisk 3D visualisering for eiendom",
+      "isPartOf": { "@id": "https://wabi3d.no/#website" },
+      "about": { "@id": "https://wabi3d.no/#organization" },
+      "inLanguage": "nb-NO"
+    }
+  ]
 }
 </script>
 <!--
@@ -478,6 +512,7 @@ html.lenis,html.lenis body{height:auto}
     <a class="brand" href="#home"><img src="images/wabi-logo-black.svg" alt="" aria-hidden="true">WABI 3D</a>
     <ul class="nav-links">
       <li><a href="#tjenester">Tjenester</a></li>
+      <li><a href="/3d-visualisering-eiendom/">3D visualisering</a></li>
       <li><a href="#galleri">Galleri</a></li>
       <li><a href="#prosess">Prosess</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
@@ -496,7 +531,7 @@ html.lenis,html.lenis body{height:auto}
   <div class="wrap hero-inner">
     <div class="hero-copy">
       <h1 class="rise">Selg boligen din før <em>første spadetak.</em></h1>
-      <p class="hero-lead rise" style="animation-delay:.16s">Vi lager 3D-bilder, interaktiv boligvelger, videoanimasjon og prosjektnettsider — alt du trenger for å selge boligene før byggestart.
+      <p class="hero-lead rise" style="animation-delay:.16s">Vi lager 3D-bilder, interaktiv boligvelger, videoanimasjon og prosjektnettsider. Alt du trenger for å selge boligene før byggestart.
         <strong>Faste priser, levering på 2–5 dager.</strong></p>
       <div class="hero-actions rise" style="animation-delay:.24s">
         <a class="btn btn-white" href="#prisliste">Få prisliste <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.7"/></svg></a>
@@ -551,7 +586,7 @@ html.lenis,html.lenis body{height:auto}
           <h3>3D-bilde.</h3>
           <p class="svc-sub">I ekte foto eller full 3D.</p>
           <p>Vi setter bygget inn i ekte bilde av tomten, eller bygger hele prosjektet og omgivelsene i full 3D. Eksteriør, interiør og uteområder.</p>
-          <a class="svc-link" href="#galleri">Se galleriet <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.7"/></svg></a>
+          <a class="svc-link" href="/3d-visualisering-eiendom/">3D visualisering av eiendom <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.7"/></svg></a>
         </article>
 
         <article class="svc reveal" style="transition-delay:.08s">
@@ -562,7 +597,7 @@ html.lenis,html.lenis body{height:auto}
           </div>
           <h3>Boligvelger og videoanimasjon.</h3>
           <p class="svc-sub">Prosjektet i bevegelse.</p>
-          <p>Klikkbar boligvelger der kjøper finner riktig enhet, etasje og utsikt — og filmatiske animasjoner som viser prosjektet fra første møte til innflytting.</p>
+          <p>Klikkbar boligvelger der kjøper finner riktig enhet, etasje og utsikt, og filmatiske animasjoner som viser prosjektet fra første møte til innflytting.</p>
           <a class="svc-link" href="#prisliste">Få prisliste <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.7"/></svg></a>
         </article>
 
@@ -575,7 +610,7 @@ html.lenis,html.lenis body{height:auto}
                 <div class="mock-veil"></div>
                 <div class="mock-top">
                   <span class="mock-logo">SOLLIA</span>
-                  <span class="mock-lang">NO — EN</span>
+                  <span class="mock-lang">NO / EN</span>
                   <span class="mock-pill">BESTILL VISNING</span>
                 </div>
                 <div class="mock-copy">
@@ -794,7 +829,7 @@ html.lenis,html.lenis body{height:auto}
   <div class="wrap footer-inner">
     <span class="fbrand"><img src="images/wabi-logo-black.svg" alt="" aria-hidden="true">WABI 3D AS</span>
     <span>© <span id="year">2026</span> WABI 3D AS. Fotorealistisk 3D-visualisering for eiendom.</span>
-    <span>wabi3d.no</span>
+    <span><a href="/3d-visualisering-eiendom/">3D visualisering eiendom</a></span>
   </div>
 </footer>
 

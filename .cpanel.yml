@@ -4,6 +4,9 @@ deployment:
     - export DEPLOYPATH=/home/$USER/public_html/
     - /bin/cp -R index.html $DEPLOYPATH
     - /bin/cp -R images/ $DEPLOYPATH
+    - /bin/cp -R 3d-visualisering-eiendom/ $DEPLOYPATH
+    - /bin/cp robots.txt $DEPLOYPATH
+    - /bin/cp sitemap.xml $DEPLOYPATH
     - /bin/cp favicon.png $DEPLOYPATH
     - /bin/cp favicon.svg $DEPLOYPATH
     - /bin/cp llms.txt $DEPLOYPATH

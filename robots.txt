@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Prislister er bak e-postskjema — ingen verdi som søkeresultat
+Disallow: /norgespakkene-2026.pdf
+Disallow: /premiumpakkene-2026.pdf
+Disallow: /prisliste.pdf
+
+Sitemap: https://wabi3d.no/sitemap.xml
