@@ -1,10 +1,10 @@
 # WABI 3D
 
-> Fotorealistisk 3D visualisering av eiendom for eiendomsutviklere i Norge og Norden.
+> 3D visualisering av eiendom for eiendomsutviklere i Norge og Norden. Fotorealistiske bilder laget fra arkitekttegninger, med fast pris og levering på 2–5 dager.
 
 ## Om WABI 3D
 
-WABI 3D er et norsk selskap som leverer fotorealistisk 3D visualisering av eiendom for eiendomsutviklere, entreprenører og arkitekter. Vi har vært aktive siden 2019 og levert over 1 000 bilder, med en ordinær leveringstid på 2–5 dager.
+WABI 3D er et norsk selskap som leverer 3D visualisering av eiendom for eiendomsutviklere, entreprenører og arkitekter. Vi har vært aktive siden 2019 og levert over 1 000 bilder, med en ordinær leveringstid på 2–5 dager.
 
 Vi er bygget for eiendomsutviklere. Store nok til å levere på industrinivå, små nok til å bry oss om hvert eneste prosjekt.
 
@@ -29,6 +29,24 @@ Vi er bygget for eiendomsutviklere. Store nok til å levere på industrinivå, s
 
 Faste pakkepriser, ikke timepris. To prislister for 2026, Norgespakkene og Premiumpakkene, i tillegg til pris per enkeltbilde. Prislistene låses opp mot e-postadresse på https://wabi3d.no/#prisliste
 
+## Vanlige spørsmål
+
+**Hva er 3D visualisering av eiendom?** 3D visualisering av eiendom er fotorealistiske bilder av et bygg som ennå ikke er oppført, laget fra arkitekttegninger eller en 3D-modell. Bildene brukes i prospekt, Finn-annonser og kampanjer for å selge boligene før byggestart. Vanlige typer er eksteriør, interiør, fotomontasje, prosjektillustrasjon, plantegninger og boligvelger.
+
+**Hva koster 3D visualisering av eiendom?** Prisen avhenger av om det er ett enkeltbilde eller et helt prosjekt, og av hvor mye som må modelleres. Vi jobber med faste pakkepriser i stedet for timepris, slik at du vet totalen før vi starter. Hele prislisten for 2026 sendes ved å legge igjen e-postadressen din på https://wabi3d.no/#prisliste
+
+**Hvor lang tid tar en 3D visualisering?** Ordinær leveringstid er 2–5 dager fra vi har mottatt tegningene. Større prosjekter med mange enheter og uteområder tar noe lenger. Du får en skisse til godkjenning underveis, og vi svarer på henvendelser innen én time i arbeidstiden.
+
+**Hvilket underlag trenger dere for å lage 3D-bilder?** Plantegninger, snitt, fasadetegninger og utomhusplan i PDF er nok til å komme i gang. Har du en 3D-modell fra Revit, ArchiCAD, SketchUp eller Rhino, kan vi bruke den direkte. Vi trenger også materialvalg, eller så foreslår vi en palett du kan godkjenne.
+
+**Kan dere sette bygget inn i et ekte bilde av tomten?** Ja. Det kalles fotomontasje, og er ofte den mest overbevisende løsningen for eneboliger og småhusprosjekter fordi nabolaget, terrenget og vegetasjonen er ekte. Vi kan ta dronebildene selv om prosjektet trenger det.
+
+**Hvor mange revisjoner er inkludert?** Ubegrenset. Vi justerer materialer, lys, årstid, vegetasjon og kameravinkel til bildet stemmer med prosjektet. Endringer i selve byggets geometri etter godkjent skisse avtales særskilt.
+
+**Kan 3D-bildene brukes i prospekt og i annonser?** Ja. Du får bildene i full oppløsning med full bruksrett i markedsføringen av prosjektet: prospekt, Finn-annonse, nettside, sosiale medier og trykk.
+
+**Hvor leverer dere?** Vi leverer i hele Norge, fra Kristiansand og Stavanger til Bergen, Oslo, Trondheim og nordover. Arbeidet foregår digitalt, så vi tar også oppdrag i Sverige, Danmark og Finland. Vi korresponderer på norsk, svensk, dansk og engelsk.
+
 ## Kontakt
 
 - **E-post:** ulrik@wabi3d.no
@@ -37,7 +55,7 @@ Faste pakkepriser, ikke timepris. To prislister for 2026, Norgespakkene og Premi
 
 ## Sider
 
-- [Forside](https://wabi3d.no/): tjenester, galleri, prosess og prisliste
+- [Forside](https://wabi3d.no/): 3D visualisering eiendom — tjenester, galleri, prosess og prisliste
 - [3D visualisering eiendom](https://wabi3d.no/3d-visualisering-eiendom/): hva det er, typer, pris, prosess og ofte stilte spørsmål
 
 ## Referanser
