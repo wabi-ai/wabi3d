@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="nb">
 <head>
+<!-- Cookiebot consent banner - must stay first in <head>, before gtag.js -->
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="b6426806-0e7a-406d-ace7-4b2835971706" type="text/javascript" async></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18387474319"></script>
 <script>
@@ -1034,6 +1036,12 @@ html.lenis,html.lenis body{height:auto}
   function setupLead(){
     var LEAD_ENDPOINT = "https://formsubmit.co/ajax/ulrik@wabi3d.no"; // varsler ulrik@wabi3d.no om nye leads
 
+    /* Google Ads conversion for the prisliste lead form.
+       Hent labelen i Google Ads → Mål → Konverteringer → åpne konverterings-
+       handlingen → "Tag setup" → "Install the tag yourself". Den ser slik ut:
+       AW-18387474319/AbC-D_efGhIjKlM. Uten label gjør sporingen ingenting. */
+    var ADS_CONVERSION_LABEL = ""; // f.eks. "AW-18387474319/AbC-D_efGhIjKlM"
+
     var form = document.getElementById("leadForm");
     var input = document.getElementById("leadEmail");
     var status = document.getElementById("leadStatus");
@@ -1077,6 +1085,8 @@ html.lenis,html.lenis body{height:auto}
 
       try { localStorage.setItem(STORE, email); } catch(e){}
 
+      trackConversion(email);
+
       // Fire the lead off to the endpoint (non-blocking) — the download unlocks
       // regardless, so a dead endpoint never costs us the conversion. One retry
       // covers the usual transient failure; sendBeacon is the last resort and
@@ -1084,6 +1094,18 @@ html.lenis,html.lenis body{height:auto}
       notify(email);
       setTimeout(unlock, 250);
     });
+
+    // Report the lead to Google Ads. Fires once per e-mail per browser so that a
+    // visitor who unlocks, resets and re-submits is not counted twice.
+    var CONV_STORE = "wabi_lead_conv";
+    function trackConversion(email){
+      if (!ADS_CONVERSION_LABEL || typeof window.gtag !== "function") return;
+      try {
+        if (localStorage.getItem(CONV_STORE) === email) return;
+        localStorage.setItem(CONV_STORE, email);
+      } catch(e){}
+      window.gtag("event", "conversion", { send_to: ADS_CONVERSION_LABEL });
+    }
 
     function payload(email){
       return {
