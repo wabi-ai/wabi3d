@@ -1036,11 +1036,10 @@ html.lenis,html.lenis body{height:auto}
   function setupLead(){
     var LEAD_ENDPOINT = "https://formsubmit.co/ajax/ulrik@wabi3d.no"; // varsler ulrik@wabi3d.no om nye leads
 
-    /* Google Ads conversion for the prisliste lead form.
-       Hent labelen i Google Ads → Mål → Konverteringer → åpne konverterings-
-       handlingen → "Tag setup" → "Install the tag yourself". Den ser slik ut:
-       AW-18387474319/AbC-D_efGhIjKlM. Uten label gjør sporingen ingenting. */
-    var ADS_CONVERSION_LABEL = ""; // f.eks. "AW-18387474319/AbC-D_efGhIjKlM"
+    /* Google Ads conversion action for the prisliste lead form. The label comes
+       from the action's tag setup in Google Ads — replace it if the action is
+       ever recreated, since a new action gets a new label. */
+    var ADS_CONVERSION_LABEL = "AW-18387474319/7TBgCKnw4eQcEI-v6r9E"; // "Pristilbud etterspurt"
 
     var form = document.getElementById("leadForm");
     var input = document.getElementById("leadEmail");
